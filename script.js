@@ -1,29 +1,47 @@
-/* =========================================
-   MOBILE MENU
-========================================= */
+/* =========================================================
+   THE INITIATIVE FOR HUMAN AND ENVIRONMENTAL WELLBEING
+   COMPLETE SCRIPT.JS
+========================================================= */
+
+
+/* =========================================================
+   MOBILE NAVIGATION
+========================================================= */
 
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
+
 
 if (menuBtn && navLinks) {
 
     menuBtn.addEventListener("click", () => {
 
-        navLinks.classList.toggle("open");
+        navLinks.classList.toggle("active");
+
+        if (navLinks.classList.contains("active")) {
+
+            menuBtn.textContent = "✕";
+
+        } else {
+
+            menuBtn.textContent = "☰";
+
+        }
 
     });
 
 
-    /* Close menu when a link is clicked */
+    /* Close menu when a navigation link is clicked */
 
-    const links =
-        navLinks.querySelectorAll("a");
+    const navItems = navLinks.querySelectorAll("a");
 
-    links.forEach(link => {
+    navItems.forEach((link) => {
 
         link.addEventListener("click", () => {
 
-            navLinks.classList.remove("open");
+            navLinks.classList.remove("active");
+
+            menuBtn.textContent = "☰";
 
         });
 
@@ -32,9 +50,50 @@ if (menuBtn && navLinks) {
 }
 
 
-/* =========================================
+/* =========================================================
+   SCROLL REVEAL ANIMATION
+========================================================= */
+
+const revealElements =
+    document.querySelectorAll(".reveal");
+
+
+const revealObserver =
+    new IntersectionObserver(
+
+        (entries, observer) => {
+
+            entries.forEach((entry) => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                    observer.unobserve(entry.target);
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.12
+        }
+
+    );
+
+
+revealElements.forEach((element) => {
+
+    revealObserver.observe(element);
+
+});
+
+
+/* =========================================================
    ACTIVE NAVIGATION
-========================================= */
+========================================================= */
 
 const sections =
     document.querySelectorAll("section[id]");
@@ -43,76 +102,156 @@ const navigationLinks =
     document.querySelectorAll(".nav-links a");
 
 
-window.addEventListener("scroll", () => {
+const sectionObserver =
+    new IntersectionObserver(
 
-    let currentSection = "";
+        (entries) => {
 
-    sections.forEach(section => {
+            entries.forEach((entry) => {
 
-        const sectionTop =
-            section.offsetTop - 150;
+                if (entry.isIntersecting) {
 
-        const sectionHeight =
-            section.offsetHeight;
+                    const currentId =
+                        entry.target.getAttribute("id");
 
-        if (
-            window.scrollY >= sectionTop &&
-            window.scrollY <
-            sectionTop + sectionHeight
-        ) {
 
-            currentSection =
-                section.getAttribute("id");
+                    navigationLinks.forEach((link) => {
 
+                        link.classList.remove("active-link");
+
+                        const linkTarget =
+                            link.getAttribute("href");
+
+
+                        if (
+                            linkTarget === "#" + currentId
+                        ) {
+
+                            link.classList.add(
+                                "active-link"
+                            );
+
+                        }
+
+                    });
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.35
         }
 
-    });
+    );
 
 
-    navigationLinks.forEach(link => {
+sections.forEach((section) => {
 
-        link.classList.remove("active");
-
-        const target =
-            link.getAttribute("href");
-
-        if (
-            target === `#${currentSection}`
-        ) {
-
-            link.classList.add("active");
-
-        }
-
-    });
+    sectionObserver.observe(section);
 
 });
 
 
-/* =========================================
+/* =========================================================
+   NAVBAR SCROLL EFFECT
+========================================================= */
+
+const navbar =
+    document.querySelector(".navbar");
+
+
+let lastScroll = 0;
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        const currentScroll =
+            window.scrollY;
+
+
+        if (!navbar) return;
+
+
+        if (currentScroll > 50) {
+
+            navbar.style.boxShadow =
+                "0 10px 35px rgba(20, 25, 20, 0.08)";
+
+        } else {
+
+            navbar.style.boxShadow = "none";
+
+        }
+
+
+        lastScroll = currentScroll;
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================================
    SMOOTH SCROLL
-========================================= */
+========================================================= */
 
 document
     .querySelectorAll('a[href^="#"]')
-    .forEach(anchor => {
+    .forEach((anchor) => {
 
         anchor.addEventListener(
             "click",
-            function(event) {
+            function (event) {
+
+                const targetId =
+                    this.getAttribute("href");
+
+
+                if (
+                    targetId === "#" ||
+                    targetId === ""
+                ) {
+
+                    return;
+
+                }
+
 
                 const target =
-                    document.querySelector(
-                        this.getAttribute("href")
-                    );
+                    document.querySelector(targetId);
+
 
                 if (target) {
 
                     event.preventDefault();
 
-                    target.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
+
+                    const navbarHeight =
+                        navbar
+                            ? navbar.offsetHeight
+                            : 0;
+
+
+                    const targetPosition =
+                        target.getBoundingClientRect().top +
+                        window.scrollY -
+                        navbarHeight -
+                        15;
+
+
+                    window.scrollTo({
+
+                        top: targetPosition,
+
+                        behavior: "smooth"
+
                     });
 
                 }
@@ -123,21 +262,90 @@ document
     });
 
 
-/* =========================================
-   CARD TILT EFFECT
-========================================= */
+/* =========================================================
+   BACKGROUND PARALLAX
+========================================================= */
+
+const backgroundSections =
+    document.querySelectorAll(
+        ".hero, .education-section, .health-section, .environment-section, .rationale-section"
+    );
+
+
+window.addEventListener(
+    "scroll",
+    () => {
+
+        if (window.innerWidth <= 760) {
+
+            return;
+
+        }
+
+
+        const scrollPosition =
+            window.scrollY;
+
+
+        backgroundSections.forEach(
+            (section) => {
+
+                const rect =
+                    section.getBoundingClientRect();
+
+
+                const sectionCenter =
+                    rect.top + rect.height / 2;
+
+
+                const viewportCenter =
+                    window.innerHeight / 2;
+
+
+                const distance =
+                    sectionCenter -
+                    viewportCenter;
+
+
+                const movement =
+                    distance * -0.025;
+
+
+                if (
+                    Math.abs(distance) <
+                    window.innerHeight * 1.2
+                ) {
+
+                    section.style.backgroundPosition =
+                        `center calc(50% + ${movement}px)`;
+
+                }
+
+            }
+        );
+
+    },
+    {
+        passive: true
+    }
+);
+
+
+/* =========================================================
+   CARD HOVER EFFECT
+========================================================= */
 
 const cards =
     document.querySelectorAll(".topic-card");
 
 
-cards.forEach(card => {
+cards.forEach((card) => {
 
     card.addEventListener(
         "mousemove",
         (event) => {
 
-            if (window.innerWidth <= 800) {
+            if (window.innerWidth <= 760) {
                 return;
             }
 
@@ -147,14 +355,18 @@ cards.forEach(card => {
 
 
             const x =
-                event.clientX - rect.left;
+                event.clientX -
+                rect.left;
+
 
             const y =
-                event.clientY - rect.top;
+                event.clientY -
+                rect.top;
 
 
             const centerX =
                 rect.width / 2;
+
 
             const centerY =
                 rect.height / 2;
@@ -169,7 +381,8 @@ cards.forEach(card => {
 
 
             card.style.transform =
-                `translateY(-9px)
+                `translateY(-10px)
+                 perspective(800px)
                  rotateX(${rotateX}deg)
                  rotateY(${rotateY}deg)`;
 
@@ -182,7 +395,7 @@ cards.forEach(card => {
         () => {
 
             card.style.transform =
-                "translateY(0) rotateX(0) rotateY(0)";
+                "translateY(0)";
 
         }
     );
@@ -190,116 +403,71 @@ cards.forEach(card => {
 });
 
 
-/* =========================================
-   SCROLL REVEAL
-========================================= */
+/* =========================================================
+   ESCAPE KEY CLOSES MOBILE MENU
+========================================================= */
 
-const revealElements =
-    document.querySelectorAll(
-        ".intro, .topic-card, .article, .takeaway, .references"
-    );
+document.addEventListener(
+    "keydown",
+    (event) => {
 
+        if (
+            event.key === "Escape" &&
+            navLinks &&
+            navLinks.classList.contains("active")
+        ) {
 
-const observer =
-    new IntersectionObserver(
-        (entries) => {
+            navLinks.classList.remove("active");
 
-            entries.forEach(entry => {
+            if (menuBtn) {
 
-                if (entry.isIntersecting) {
+                menuBtn.textContent = "☰";
 
-                    entry.target.classList.add(
-                        "visible"
-                    );
+            }
 
-                    observer.unobserve(
-                        entry.target
-                    );
-
-                }
-
-            });
-
-        },
-        {
-            threshold: 0.12
         }
-    );
+
+    }
+);
 
 
-revealElements.forEach(element => {
+/* =========================================================
+   UPDATE YEAR AUTOMATICALLY
+========================================================= */
 
-    element.classList.add("reveal");
-
-    observer.observe(element);
-
-});
-
-
-/* =========================================
-   REVEAL ANIMATION CSS
-========================================= */
-
-const revealStyle =
-    document.createElement("style");
+const footer =
+    document.querySelector("footer");
 
 
-revealStyle.textContent = `
+if (footer) {
 
-    .reveal {
+    const footerText =
+        footer.querySelector("p");
 
-        opacity: 0;
 
-        transform:
-            translateY(25px);
+    if (footerText) {
 
-        transition:
-            opacity 0.8s ease,
-            transform 0.8s ease;
+        const currentYear =
+            new Date().getFullYear();
+
+
+        footerText.textContent =
+            `© ${currentYear} The Initiative for Human and Environmental Wellbeing`;
 
     }
 
-
-    .reveal.visible {
-
-        opacity: 1;
-
-        transform:
-            translateY(0);
-
-    }
-
-`;
+}
 
 
-document.head.appendChild(revealStyle);
+/* =========================================================
+   PAGE LOADED
+========================================================= */
 
+window.addEventListener(
+    "load",
+    () => {
 
-/* =========================================
-   NAVBAR SHADOW ON SCROLL
-========================================= */
-
-const navbar =
-    document.querySelector(".navbar");
-
-
-window.addEventListener("scroll", () => {
-
-    if (!navbar) {
-        return;
-    }
-
-
-    if (window.scrollY > 20) {
-
-        navbar.style.boxShadow =
-            "0 8px 30px rgba(29, 43, 37, 0.07)";
-
-    } else {
-
-        navbar.style.boxShadow =
-            "none";
+        document.body.classList.add("page-loaded");
 
     }
-
-});
+);
