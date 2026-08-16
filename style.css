@@ -23,9 +23,7 @@ a {
 }
 
 
-/* =====================================================
-   NAVBAR
-===================================================== */
+/* NAVBAR */
 
 .navbar {
     position: fixed;
@@ -82,9 +80,7 @@ a {
 }
 
 
-/* =====================================================
-   HERO
-===================================================== */
+/* HERO */
 
 .hero {
     min-height: 100vh;
@@ -163,9 +159,7 @@ a {
 }
 
 
-/* =====================================================
-   GENERAL SECTIONS
-===================================================== */
+/* GENERAL SECTIONS */
 
 .normal-section,
 .contents-section,
@@ -201,9 +195,7 @@ a {
 }
 
 
-/* =====================================================
-   ABOUT
-===================================================== */
+/* ABOUT */
 
 .about-grid {
     max-width: 1250px;
@@ -250,9 +242,7 @@ a {
 }
 
 
-/* =====================================================
-   RATIONALE
-===================================================== */
+/* RATIONALE */
 
 .rationale-section {
     min-height: 650px;
@@ -303,9 +293,7 @@ a {
 }
 
 
-/* =====================================================
-   ⭐ TABLE OF CONTENTS
-===================================================== */
+/* TABLE OF CONTENTS */
 
 .contents-section {
     background: #f4f1e9;
@@ -322,9 +310,6 @@ a {
 
     gap: 28px;
 }
-
-
-/* Each TOC item */
 
 .contents-category {
     min-height: 250px;
@@ -352,9 +337,6 @@ a {
         0 25px 55px rgba(0,0,0,0.16);
 }
 
-
-/* Images */
-
 .contents-image {
     min-height: 250px;
 
@@ -363,32 +345,20 @@ a {
     background-position: center;
 }
 
-
-/* Education TOC image */
-
 .education-contents-image {
     background-image:
         url("https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1200&q=90");
 }
-
-
-/* Health TOC image */
 
 .health-contents-image {
     background-image:
         url("https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=90");
 }
 
-
-/* Environment TOC image */
-
 .environment-contents-image {
     background-image:
         url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=90");
 }
-
-
-/* Info */
 
 .contents-info {
     padding: 38px 45px;
@@ -415,7 +385,7 @@ a {
 
     line-height: 1.1;
 
-    margin: 8px 0 8px;
+    margin: 8px 0;
 }
 
 .contents-info > p {
@@ -425,9 +395,6 @@ a {
 
     margin-bottom: 20px;
 }
-
-
-/* Actual hyperlink */
 
 .contents-link {
     display: flex;
@@ -472,9 +439,7 @@ a {
 }
 
 
-/* =====================================================
-   TOPIC SECTIONS
-===================================================== */
+/* TOPIC SECTIONS */
 
 .topic-section {
     position: relative;
@@ -507,9 +472,7 @@ a {
 }
 
 
-/* =====================================================
-   CATEGORY BACKGROUNDS
-===================================================== */
+/* CATEGORY BACKGROUNDS */
 
 .education-background {
     background-image:
@@ -527,9 +490,7 @@ a {
 }
 
 
-/* =====================================================
-   TOPIC CONTENT
-===================================================== */
+/* TOPIC CONTENT */
 
 .topic-content {
     position: relative;
@@ -566,9 +527,7 @@ a {
 }
 
 
-/* =====================================================
-   ESSAY
-===================================================== */
+/* ESSAY */
 
 .full-essay {
     position: relative;
@@ -586,9 +545,6 @@ a {
     box-shadow:
         0 30px 80px rgba(0,0,0,0.30);
 }
-
-
-/* Essay heading */
 
 .full-essay-header {
     padding: 55px 75px;
@@ -617,9 +573,6 @@ a {
 
     line-height: 1.15;
 }
-
-
-/* Essay body */
 
 .essay-body {
     padding: 70px 85px;
@@ -664,9 +617,7 @@ a {
 }
 
 
-/* =====================================================
-   REFERENCES
-===================================================== */
+/* REFERENCES */
 
 .references {
     margin-top: 60px;
@@ -690,10 +641,20 @@ a {
     margin-bottom: 12px;
 }
 
+.references a {
+    color: #315f4a;
 
-/* =====================================================
-   TAKEAWAYS
-===================================================== */
+    text-decoration: underline;
+
+    overflow-wrap: anywhere;
+}
+
+.references a:hover {
+    color: #17221c;
+}
+
+
+/* TAKEAWAYS */
 
 .takeaway-grid {
     max-width: 1250px;
@@ -742,9 +703,7 @@ a {
 }
 
 
-/* =====================================================
-   CONTRIBUTORS
-===================================================== */
+/* CONTRIBUTORS */
 
 .contributors-section {
     background: #ebe7dc;
@@ -808,16 +767,18 @@ a {
     margin-bottom: 20px;
 }
 
-.contributor-card > p:last-child {
+.contributor-card > p {
     font-size: 16px;
 
     color: #555;
+
+    line-height: 1.8;
+
+    margin-bottom: 15px;
 }
 
 
-/* =====================================================
-   FOOTER
-===================================================== */
+/* FOOTER */
 
 footer {
     background: #16211b;
@@ -848,9 +809,7 @@ footer .copyright {
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+/* MOBILE */
 
 @media (max-width: 1000px) {
 
