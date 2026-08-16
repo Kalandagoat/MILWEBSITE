@@ -1,7 +1,3 @@
-/* =========================================================
-   RESET
-========================================================= */
-
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +6,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+    scroll-padding-top: 100px;
 }
 
 body {
@@ -27,16 +23,15 @@ a {
 }
 
 
-/* =========================================================
+/* =====================================================
    NAVBAR
-========================================================= */
+===================================================== */
 
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-
     z-index: 1000;
 
     display: flex;
@@ -47,7 +42,7 @@ a {
 
     background: rgba(250, 248, 242, 0.96);
 
-    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
 
     backdrop-filter: blur(12px);
 }
@@ -65,7 +60,7 @@ a {
 }
 
 .logo small {
-    font-size: 11px;
+    font-size: 10px;
     margin-top: 5px;
     opacity: 0.6;
     letter-spacing: 1px;
@@ -87,9 +82,9 @@ a {
 }
 
 
-/* =========================================================
+/* =====================================================
    HERO
-========================================================= */
+===================================================== */
 
 .hero {
     min-height: 100vh;
@@ -113,9 +108,9 @@ a {
     background:
         linear-gradient(
             90deg,
-            rgba(10, 20, 14, 0.78),
-            rgba(10, 20, 14, 0.42),
-            rgba(10, 20, 14, 0.15)
+            rgba(10,20,14,0.78),
+            rgba(10,20,14,0.42),
+            rgba(10,20,14,0.15)
         );
 }
 
@@ -168,11 +163,14 @@ a {
 }
 
 
-/* =========================================================
+/* =====================================================
    GENERAL SECTIONS
-========================================================= */
+===================================================== */
 
-.normal-section {
+.normal-section,
+.contents-section,
+.takeaways-section,
+.contributors-section {
     padding: 120px 7%;
     background: #f4f1e9;
 }
@@ -192,7 +190,7 @@ a {
 }
 
 .section-heading h2 {
-    font-size: clamp(40px, 5vw, 65px);
+    font-size: clamp(40px,5vw,65px);
     line-height: 1.1;
     margin-bottom: 20px;
 }
@@ -203,16 +201,16 @@ a {
 }
 
 
-/* =========================================================
+/* =====================================================
    ABOUT
-========================================================= */
+===================================================== */
 
 .about-grid {
     max-width: 1250px;
     margin: auto;
 
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
 
     gap: 30px;
 }
@@ -224,7 +222,7 @@ a {
 
     border-radius: 24px;
 
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0,0,0,0.08);
 
     transition: 0.3s;
 }
@@ -233,7 +231,7 @@ a {
     transform: translateY(-8px);
 
     box-shadow:
-        0 20px 50px rgba(0, 0, 0, 0.1);
+        0 20px 50px rgba(0,0,0,0.1);
 }
 
 .about-icon {
@@ -252,9 +250,9 @@ a {
 }
 
 
-/* =========================================================
+/* =====================================================
    RATIONALE
-========================================================= */
+===================================================== */
 
 .rationale-section {
     min-height: 650px;
@@ -277,7 +275,7 @@ a {
     position: absolute;
     inset: 0;
 
-    background: rgba(12, 22, 17, 0.72);
+    background: rgba(12,22,17,0.72);
 }
 
 .rationale-content {
@@ -294,7 +292,7 @@ a {
 }
 
 .rationale-content h2 {
-    font-size: clamp(40px, 5vw, 65px);
+    font-size: clamp(40px,5vw,65px);
     line-height: 1.1;
     margin-bottom: 30px;
 }
@@ -305,9 +303,178 @@ a {
 }
 
 
-/* =========================================================
-   TOPIC SECTION
-========================================================= */
+/* =====================================================
+   ⭐ TABLE OF CONTENTS
+===================================================== */
+
+.contents-section {
+    background: #f4f1e9;
+}
+
+.contents-container {
+    max-width: 1200px;
+
+    margin: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 28px;
+}
+
+
+/* Each TOC item */
+
+.contents-category {
+    min-height: 250px;
+
+    display: grid;
+
+    grid-template-columns: 35% 65%;
+
+    overflow: hidden;
+
+    background: white;
+
+    border-radius: 26px;
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,0.10);
+
+    transition: 0.3s;
+}
+
+.contents-category:hover {
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 25px 55px rgba(0,0,0,0.16);
+}
+
+
+/* Images */
+
+.contents-image {
+    min-height: 250px;
+
+    background-size: cover;
+
+    background-position: center;
+}
+
+
+/* Education TOC image */
+
+.education-contents-image {
+    background-image:
+        url("https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1200&q=90");
+}
+
+
+/* Health TOC image */
+
+.health-contents-image {
+    background-image:
+        url("https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=90");
+}
+
+
+/* Environment TOC image */
+
+.environment-contents-image {
+    background-image:
+        url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=90");
+}
+
+
+/* Info */
+
+.contents-info {
+    padding: 38px 45px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.contents-info > span {
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    font-weight: 800;
+
+    opacity: 0.5;
+}
+
+.contents-info h3 {
+    font-size: 38px;
+
+    line-height: 1.1;
+
+    margin: 8px 0 8px;
+}
+
+.contents-info > p {
+    color: #666;
+
+    font-size: 16px;
+
+    margin-bottom: 20px;
+}
+
+
+/* Actual hyperlink */
+
+.contents-link {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 18px 20px;
+
+    background: #f2f0e9;
+
+    border: 1px solid #ddd9ce;
+
+    border-radius: 14px;
+
+    transition: 0.25s;
+}
+
+.contents-link:hover {
+    background: #18231d;
+
+    color: white;
+
+    transform: translateX(6px);
+}
+
+.contents-link span {
+    font-weight: 700;
+
+    font-size: 16px;
+
+    line-height: 1.4;
+}
+
+.contents-link strong {
+    white-space: nowrap;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   TOPIC SECTIONS
+===================================================== */
 
 .topic-section {
     position: relative;
@@ -317,22 +484,17 @@ a {
     overflow: hidden;
 }
 
-
-/* Background image */
-
 .topic-background {
     position: absolute;
 
     inset: 0;
 
     background-size: cover;
+
     background-position: center;
 
     z-index: 0;
 }
-
-
-/* Keep image visible but darken it */
 
 .topic-background::after {
     content: "";
@@ -341,26 +503,13 @@ a {
 
     inset: 0;
 
-    background: rgba(10, 18, 14, 0.62);
+    background: rgba(10,18,14,0.60);
 }
 
 
-/* Content sits above image */
-
-.topic-content {
-    position: relative;
-
-    z-index: 2;
-
-    max-width: 1400px;
-
-    margin: auto;
-}
-
-
-/* =========================================================
-   CATEGORY BACKGROUND IMAGES
-========================================================= */
+/* =====================================================
+   CATEGORY BACKGROUNDS
+===================================================== */
 
 .education-background {
     background-image:
@@ -378,9 +527,19 @@ a {
 }
 
 
-/* =========================================================
-   TOPIC HEADER
-========================================================= */
+/* =====================================================
+   TOPIC CONTENT
+===================================================== */
+
+.topic-content {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 1400px;
+
+    margin: auto;
+}
 
 .topic-header {
     max-width: 900px;
@@ -393,7 +552,7 @@ a {
 }
 
 .topic-header h2 {
-    font-size: clamp(48px, 6vw, 80px);
+    font-size: clamp(48px,6vw,80px);
 
     line-height: 1;
 
@@ -407,185 +566,9 @@ a {
 }
 
 
-/* =========================================================
-   ⭐ DEDICATED HYPERLINK SECTION
-========================================================= */
-
-.essay-links-section {
-    max-width: 1250px;
-
-    margin: 0 auto 90px;
-
-    padding: 45px;
-
-    background: rgba(255, 255, 255, 0.94);
-
-    border-radius: 30px;
-
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.25);
-}
-
-.essay-links-title {
-    text-align: center;
-
-    margin-bottom: 35px;
-
-    color: #18231d;
-}
-
-.essay-links-title h3 {
-    font-size: 32px;
-
-    margin-bottom: 8px;
-}
-
-.essay-links-title p {
-    font-size: 16px;
-
-    color: #666;
-}
-
-
-/* =========================================================
-   HYPERLINK BOXES
-========================================================= */
-
-.essay-links-grid {
-    display: grid;
-
-    grid-template-columns: repeat(3, 1fr);
-
-    gap: 25px;
-}
-
-.essay-link-card {
-    min-height: 330px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: flex-end;
-
-    overflow: hidden;
-
-    position: relative;
-
-    border-radius: 22px;
-
-    color: white;
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, 0.18);
-
-    transition: 0.3s;
-}
-
-.essay-link-card:hover {
-    transform: translateY(-8px);
-
-    box-shadow:
-        0 25px 50px rgba(0, 0, 0, 0.28);
-}
-
-
-/* Images inside hyperlink cards */
-
-.education-link {
-    background-image:
-        linear-gradient(
-            to top,
-            rgba(8, 18, 12, 0.9),
-            rgba(8, 18, 12, 0.15)
-        ),
-        url("https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=1200&q=90");
-
-    background-size: cover;
-    background-position: center;
-}
-
-.health-link {
-    background-image:
-        linear-gradient(
-            to top,
-            rgba(8, 18, 12, 0.9),
-            rgba(8, 18, 12, 0.15)
-        ),
-        url("https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=90");
-
-    background-size: cover;
-    background-position: center;
-}
-
-.environment-link {
-    background-image:
-        linear-gradient(
-            to top,
-            rgba(8, 18, 12, 0.9),
-            rgba(8, 18, 12, 0.15)
-        ),
-        url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1200&q=90");
-
-    background-size: cover;
-    background-position: center;
-}
-
-
-/* Text panel inside cards */
-
-.essay-link-content {
-    position: relative;
-
-    z-index: 2;
-
-    padding: 28px;
-}
-
-.essay-link-content span {
-    font-size: 12px;
-
-    letter-spacing: 2px;
-
-    font-weight: 800;
-
-    opacity: 0.8;
-}
-
-.essay-link-content h3 {
-    font-size: 28px;
-
-    line-height: 1.2;
-
-    margin: 10px 0 18px;
-}
-
-.essay-link-button {
-    display: inline-block;
-
-    padding: 11px 20px;
-
-    border-radius: 50px;
-
-    background: white;
-
-    color: #18231d;
-
-    font-size: 14px;
-
-    font-weight: 800;
-
-    transition: 0.25s;
-}
-
-.essay-link-button:hover {
-    transform: translateX(5px);
-}
-
-
-/* =========================================================
-   ACTUAL ESSAY CONTAINER
-========================================================= */
+/* =====================================================
+   ESSAY
+===================================================== */
 
 .full-essay {
     position: relative;
@@ -598,21 +581,14 @@ a {
 
     overflow: hidden;
 
-    /*
-       SOLID BACKGROUND
-       so the essay NEVER blends into the image
-    */
-
     background: #fffdf8;
 
     box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.30);
+        0 30px 80px rgba(0,0,0,0.30);
 }
 
 
-/* =========================================================
-   ESSAY HEADER
-========================================================= */
+/* Essay heading */
 
 .full-essay-header {
     padding: 55px 75px;
@@ -637,26 +613,19 @@ a {
 }
 
 .full-essay-header h2 {
-    font-size: clamp(34px, 4vw, 52px);
+    font-size: clamp(34px,4vw,52px);
 
     line-height: 1.15;
 }
 
 
-/* =========================================================
-   ESSAY BODY
-========================================================= */
+/* Essay body */
 
 .essay-body {
     padding: 70px 85px;
 
     background: #fffdf8;
 }
-
-
-/*
-   BIGGER AND DARKER TEXT
-*/
 
 .essay-body p {
     color: #202620;
@@ -666,14 +635,7 @@ a {
     line-height: 2;
 
     margin-bottom: 28px;
-
-    text-align: left;
 }
-
-
-/*
-   Subheadings
-*/
 
 .essay-body h3 {
     color: #18231d;
@@ -686,11 +648,6 @@ a {
 
     margin-bottom: 22px;
 }
-
-
-/*
-   Lists
-*/
 
 .essay-body ul {
     margin: 10px 0 35px 35px;
@@ -707,22 +664,20 @@ a {
 }
 
 
-/* =========================================================
+/* =====================================================
    REFERENCES
-========================================================= */
+===================================================== */
 
 .references {
     margin-top: 60px;
 
-    padding: 35px 0 0;
+    padding-top: 35px;
 
     border-top: 2px solid #ddd8cd;
 }
 
 .references h3 {
     margin-top: 0;
-
-    margin-bottom: 25px;
 }
 
 .references p {
@@ -736,15 +691,9 @@ a {
 }
 
 
-/* =========================================================
+/* =====================================================
    TAKEAWAYS
-========================================================= */
-
-.takeaways-section {
-    padding: 120px 7%;
-
-    background: #f4f1e9;
-}
+===================================================== */
 
 .takeaway-grid {
     max-width: 1250px;
@@ -753,7 +702,7 @@ a {
 
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
 
     gap: 30px;
 }
@@ -765,7 +714,7 @@ a {
 
     border-radius: 24px;
 
-    border: 1px solid rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0,0,0,0.08);
 }
 
 .takeaway-card span {
@@ -793,13 +742,11 @@ a {
 }
 
 
-/* =========================================================
+/* =====================================================
    CONTRIBUTORS
-========================================================= */
+===================================================== */
 
 .contributors-section {
-    padding: 120px 7%;
-
     background: #ebe7dc;
 }
 
@@ -810,7 +757,7 @@ a {
 
     display: grid;
 
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3,1fr);
 
     gap: 30px;
 }
@@ -868,9 +815,9 @@ a {
 }
 
 
-/* =========================================================
+/* =====================================================
    FOOTER
-========================================================= */
+===================================================== */
 
 footer {
     background: #16211b;
@@ -901,9 +848,9 @@ footer .copyright {
 }
 
 
-/* =========================================================
+/* =====================================================
    MOBILE
-========================================================= */
+===================================================== */
 
 @media (max-width: 1000px) {
 
@@ -925,13 +872,16 @@ footer .copyright {
 
     .about-grid,
     .takeaway-grid,
-    .contributors-grid,
-    .essay-links-grid {
+    .contributors-grid {
         grid-template-columns: 1fr;
     }
 
-    .essay-links-section {
-        padding: 30px;
+    .contents-category {
+        grid-template-columns: 1fr;
+    }
+
+    .contents-image {
+        min-height: 230px;
     }
 
 }
@@ -951,21 +901,29 @@ footer .copyright {
         padding: 100px 25px 70px;
     }
 
-    .topic-section,
     .normal-section,
+    .contents-section,
     .takeaways-section,
     .contributors-section {
         padding: 80px 18px;
     }
 
-    .essay-links-section {
-        padding: 22px;
-
-        border-radius: 20px;
+    .topic-section {
+        padding: 80px 18px;
     }
 
-    .essay-link-card {
-        min-height: 280px;
+    .contents-info {
+        padding: 30px 25px;
+    }
+
+    .contents-info h3 {
+        font-size: 32px;
+    }
+
+    .contents-link {
+        flex-direction: column;
+
+        align-items: flex-start;
     }
 
     .full-essay {
