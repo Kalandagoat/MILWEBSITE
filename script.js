@@ -1,6 +1,6 @@
 /* =========================================================
    THE INITIATIVE FOR HUMAN AND ENVIRONMENTAL WELLBEING
-   COMPLETE SCRIPT.JS
+   COMPLETE SCRIPT
 ========================================================= */
 
 
@@ -14,7 +14,7 @@ const navLinks = document.getElementById("navLinks");
 
 if (menuBtn && navLinks) {
 
-    menuBtn.addEventListener("click", () => {
+    menuBtn.addEventListener("click", function () {
 
         navLinks.classList.toggle("active");
 
@@ -31,13 +31,15 @@ if (menuBtn && navLinks) {
     });
 
 
-    /* Close menu when a navigation link is clicked */
+    /* Close menu when clicking a link */
 
-    const navItems = navLinks.querySelectorAll("a");
+    const navigationLinks =
+        navLinks.querySelectorAll("a");
 
-    navItems.forEach((link) => {
 
-        link.addEventListener("click", () => {
+    navigationLinks.forEach(function (link) {
+
+        link.addEventListener("click", function () {
 
             navLinks.classList.remove("active");
 
@@ -50,8 +52,9 @@ if (menuBtn && navLinks) {
 }
 
 
+
 /* =========================================================
-   SCROLL REVEAL ANIMATION
+   SCROLL REVEAL
 ========================================================= */
 
 const revealElements =
@@ -61,9 +64,9 @@ const revealElements =
 const revealObserver =
     new IntersectionObserver(
 
-        (entries, observer) => {
+        function (entries, observer) {
 
-            entries.forEach((entry) => {
+            entries.forEach(function (entry) {
 
                 if (entry.isIntersecting) {
 
@@ -84,11 +87,12 @@ const revealObserver =
     );
 
 
-revealElements.forEach((element) => {
+revealElements.forEach(function (element) {
 
     revealObserver.observe(element);
 
 });
+
 
 
 /* =========================================================
@@ -96,239 +100,173 @@ revealElements.forEach((element) => {
 ========================================================= */
 
 const sections =
-    document.querySelectorAll("section[id]");
+    document.querySelectorAll(
+        "section[id]"
+    );
 
-const navigationLinks =
-    document.querySelectorAll(".nav-links a");
-
-
-const sectionObserver =
-    new IntersectionObserver(
-
-        (entries) => {
-
-            entries.forEach((entry) => {
-
-                if (entry.isIntersecting) {
-
-                    const currentId =
-                        entry.target.getAttribute("id");
-
-
-                    navigationLinks.forEach((link) => {
-
-                        link.classList.remove("active-link");
-
-                        const linkTarget =
-                            link.getAttribute("href");
-
-
-                        if (
-                            linkTarget === "#" + currentId
-                        ) {
-
-                            link.classList.add(
-                                "active-link"
-                            );
-
-                        }
-
-                    });
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.35
-        }
-
+const navItems =
+    document.querySelectorAll(
+        ".nav-links a"
     );
 
 
-sections.forEach((section) => {
+function updateActiveNavigation() {
 
-    sectionObserver.observe(section);
+    let currentSection = "";
 
-});
+    sections.forEach(function (section) {
+
+        const sectionTop =
+            section.offsetTop - 150;
+
+        const sectionHeight =
+            section.offsetHeight;
+
+        if (
+            window.scrollY >= sectionTop &&
+            window.scrollY < sectionTop + sectionHeight
+        ) {
+
+            currentSection =
+                section.getAttribute("id");
+
+        }
+
+    });
+
+
+    navItems.forEach(function (link) {
+
+        link.classList.remove(
+            "active-link"
+        );
+
+
+        const href =
+            link.getAttribute("href");
+
+
+        if (
+            href === "#" + currentSection
+        ) {
+
+            link.classList.add(
+                "active-link"
+            );
+
+        }
+
+    });
+
+}
+
+
+window.addEventListener(
+    "scroll",
+    updateActiveNavigation
+);
+
+
+updateActiveNavigation();
+
 
 
 /* =========================================================
-   NAVBAR SCROLL EFFECT
+   NAVBAR SHADOW ON SCROLL
 ========================================================= */
 
 const navbar =
     document.querySelector(".navbar");
 
 
-let lastScroll = 0;
-
-
 window.addEventListener(
     "scroll",
-    () => {
-
-        const currentScroll =
-            window.scrollY;
-
+    function () {
 
         if (!navbar) return;
 
 
-        if (currentScroll > 50) {
+        if (window.scrollY > 30) {
 
             navbar.style.boxShadow =
-                "0 10px 35px rgba(20, 25, 20, 0.08)";
+                "0 8px 30px rgba(30,35,30,.08)";
 
         } else {
 
-            navbar.style.boxShadow = "none";
+            navbar.style.boxShadow =
+                "none";
 
         }
 
-
-        lastScroll = currentScroll;
-
-    },
-    {
-        passive: true
     }
 );
+
 
 
 /* =========================================================
    SMOOTH SCROLL
 ========================================================= */
 
-document
-    .querySelectorAll('a[href^="#"]')
-    .forEach((anchor) => {
+document.querySelectorAll(
+    'a[href^="#"]'
+).forEach(function (anchor) {
 
-        anchor.addEventListener(
-            "click",
-            function (event) {
+    anchor.addEventListener(
+        "click",
+        function (event) {
 
-                const targetId =
-                    this.getAttribute("href");
-
-
-                if (
-                    targetId === "#" ||
-                    targetId === ""
-                ) {
-
-                    return;
-
-                }
+            const targetId =
+                this.getAttribute("href");
 
 
-                const target =
-                    document.querySelector(targetId);
+            if (
+                targetId === "#" ||
+                !targetId
+            ) {
 
-
-                if (target) {
-
-                    event.preventDefault();
-
-
-                    const navbarHeight =
-                        navbar
-                            ? navbar.offsetHeight
-                            : 0;
-
-
-                    const targetPosition =
-                        target.getBoundingClientRect().top +
-                        window.scrollY -
-                        navbarHeight -
-                        15;
-
-
-                    window.scrollTo({
-
-                        top: targetPosition,
-
-                        behavior: "smooth"
-
-                    });
-
-                }
+                return;
 
             }
-        );
-
-    });
 
 
-/* =========================================================
-   BACKGROUND PARALLAX
-========================================================= */
-
-const backgroundSections =
-    document.querySelectorAll(
-        ".hero, .education-section, .health-section, .environment-section, .rationale-section"
-    );
+            const target =
+                document.querySelector(
+                    targetId
+                );
 
 
-window.addEventListener(
-    "scroll",
-    () => {
+            if (!target) return;
 
-        if (window.innerWidth <= 760) {
 
-            return;
+            event.preventDefault();
+
+
+            const navbarHeight =
+                navbar
+                    ? navbar.offsetHeight
+                    : 0;
+
+
+            const targetPosition =
+                target.getBoundingClientRect().top +
+                window.scrollY -
+                navbarHeight -
+                20;
+
+
+            window.scrollTo({
+
+                top: targetPosition,
+
+                behavior: "smooth"
+
+            });
 
         }
+    );
 
+});
 
-        const scrollPosition =
-            window.scrollY;
-
-
-        backgroundSections.forEach(
-            (section) => {
-
-                const rect =
-                    section.getBoundingClientRect();
-
-
-                const sectionCenter =
-                    rect.top + rect.height / 2;
-
-
-                const viewportCenter =
-                    window.innerHeight / 2;
-
-
-                const distance =
-                    sectionCenter -
-                    viewportCenter;
-
-
-                const movement =
-                    distance * -0.025;
-
-
-                if (
-                    Math.abs(distance) <
-                    window.innerHeight * 1.2
-                ) {
-
-                    section.style.backgroundPosition =
-                        `center calc(50% + ${movement}px)`;
-
-                }
-
-            }
-        );
-
-    },
-    {
-        passive: true
-    }
-);
 
 
 /* =========================================================
@@ -336,66 +274,19 @@ window.addEventListener(
 ========================================================= */
 
 const cards =
-    document.querySelectorAll(".topic-card");
-
-
-cards.forEach((card) => {
-
-    card.addEventListener(
-        "mousemove",
-        (event) => {
-
-            if (window.innerWidth <= 760) {
-                return;
-            }
-
-
-            const rect =
-                card.getBoundingClientRect();
-
-
-            const x =
-                event.clientX -
-                rect.left;
-
-
-            const y =
-                event.clientY -
-                rect.top;
-
-
-            const centerX =
-                rect.width / 2;
-
-
-            const centerY =
-                rect.height / 2;
-
-
-            const rotateX =
-                ((y - centerY) / centerY) * -2;
-
-
-            const rotateY =
-                ((x - centerX) / centerX) * 2;
-
-
-            card.style.transform =
-                `translateY(-10px)
-                 perspective(800px)
-                 rotateX(${rotateX}deg)
-                 rotateY(${rotateY}deg)`;
-
-        }
+    document.querySelectorAll(
+        ".topic-card"
     );
 
 
-    card.addEventListener(
-        "mouseleave",
-        () => {
+cards.forEach(function (card) {
 
-            card.style.transform =
-                "translateY(0)";
+    card.addEventListener(
+        "mouseenter",
+        function () {
+
+            this.style.cursor =
+                "pointer";
 
         }
     );
@@ -403,71 +294,18 @@ cards.forEach((card) => {
 });
 
 
-/* =========================================================
-   ESCAPE KEY CLOSES MOBILE MENU
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (
-            event.key === "Escape" &&
-            navLinks &&
-            navLinks.classList.contains("active")
-        ) {
-
-            navLinks.classList.remove("active");
-
-            if (menuBtn) {
-
-                menuBtn.textContent = "☰";
-
-            }
-
-        }
-
-    }
-);
-
 
 /* =========================================================
-   UPDATE YEAR AUTOMATICALLY
-========================================================= */
-
-const footer =
-    document.querySelector("footer");
-
-
-if (footer) {
-
-    const footerText =
-        footer.querySelector("p");
-
-
-    if (footerText) {
-
-        const currentYear =
-            new Date().getFullYear();
-
-
-        footerText.textContent =
-            `© ${currentYear} The Initiative for Human and Environmental Wellbeing`;
-
-    }
-
-}
-
-
-/* =========================================================
-   PAGE LOADED
+   PAGE LOAD
 ========================================================= */
 
 window.addEventListener(
     "load",
-    () => {
+    function () {
 
-        document.body.classList.add("page-loaded");
+        document.body.classList.add(
+            "page-loaded"
+        );
 
     }
 );
