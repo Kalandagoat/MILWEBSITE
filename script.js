@@ -1,16 +1,9 @@
-```javascript
 /* =========================================
-   KNOWLEDGE+ WEBSITE
-   script.js
+   MOBILE MENU
 ========================================= */
 
-
-/* =========================================
-   MOBILE NAVIGATION
-========================================= */
-
-const menuBtn = document.querySelector(".menu-btn");
-const navLinks = document.querySelector(".nav-links");
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
 
 if (menuBtn && navLinks) {
 
@@ -18,12 +11,21 @@ if (menuBtn && navLinks) {
 
         navLinks.classList.toggle("open");
 
-        // Change menu icon
-        if (navLinks.classList.contains("open")) {
-            menuBtn.textContent = "✕";
-        } else {
-            menuBtn.textContent = "☰";
-        }
+    });
+
+
+    /* Close menu when a link is clicked */
+
+    const links =
+        navLinks.querySelectorAll("a");
+
+    links.forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            navLinks.classList.remove("open");
+
+        });
 
     });
 
@@ -31,137 +33,59 @@ if (menuBtn && navLinks) {
 
 
 /* =========================================
-   CLOSE MOBILE MENU
-   WHEN A LINK IS CLICKED
+   ACTIVE NAVIGATION
 ========================================= */
+
+const sections =
+    document.querySelectorAll("section[id]");
 
 const navigationLinks =
     document.querySelectorAll(".nav-links a");
 
-navigationLinks.forEach(link => {
 
-    link.addEventListener("click", () => {
+window.addEventListener("scroll", () => {
 
-        if (navLinks) {
-            navLinks.classList.remove("open");
-        }
+    let currentSection = "";
 
-        if (menuBtn) {
-            menuBtn.textContent = "☰";
+    sections.forEach(section => {
+
+        const sectionTop =
+            section.offsetTop - 150;
+
+        const sectionHeight =
+            section.offsetHeight;
+
+        if (
+            window.scrollY >= sectionTop &&
+            window.scrollY <
+            sectionTop + sectionHeight
+        ) {
+
+            currentSection =
+                section.getAttribute("id");
+
         }
 
     });
 
-});
 
+    navigationLinks.forEach(link => {
 
-/* =========================================
-   ACTIVE NAVIGATION LINK
-========================================= */
+        link.classList.remove("active");
 
-const sections =
-    document.querySelectorAll("section[id], article[id]");
+        const target =
+            link.getAttribute("href");
 
-const navItems =
-    document.querySelectorAll(".nav-links a");
+        if (
+            target === `#${currentSection}`
+        ) {
 
+            link.classList.add("active");
 
-const sectionObserver = new IntersectionObserver(
+        }
 
-    (entries) => {
+    });
 
-        entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-                const currentSection =
-                    entry.target.getAttribute("id");
-
-                navItems.forEach(link => {
-
-                    link.classList.remove("active");
-
-                    const linkTarget =
-                        link.getAttribute("href");
-
-                    if (linkTarget === `#${currentSection}`) {
-                        link.classList.add("active");
-                    }
-
-                });
-
-            }
-
-        });
-
-    },
-
-    {
-        rootMargin: "-35% 0px -55% 0px",
-        threshold: 0
-    }
-
-);
-
-
-sections.forEach(section => {
-    sectionObserver.observe(section);
-});
-
-
-/* =========================================
-   SCROLL REVEAL ANIMATION
-========================================= */
-
-const revealElements = document.querySelectorAll(
-    ".topic-card, .article, .takeaway, .references, .intro"
-);
-
-
-/* Add animation class */
-
-revealElements.forEach(element => {
-
-    element.style.opacity = "0";
-
-    element.style.transform = "translateY(25px)";
-
-    element.style.transition =
-        "opacity 0.8s ease, transform 0.8s ease";
-
-});
-
-
-const revealObserver = new IntersectionObserver(
-
-    (entries, observer) => {
-
-        entries.forEach(entry => {
-
-            if (entry.isIntersecting) {
-
-                entry.target.style.opacity = "1";
-
-                entry.target.style.transform =
-                    "translateY(0)";
-
-                observer.unobserve(entry.target);
-
-            }
-
-        });
-
-    },
-
-    {
-        threshold: 0.12
-    }
-
-);
-
-
-revealElements.forEach(element => {
-    revealObserver.observe(element);
 });
 
 
@@ -169,94 +93,190 @@ revealElements.forEach(element => {
    SMOOTH SCROLL
 ========================================= */
 
-document.querySelectorAll('a[href^="#"]').forEach(link => {
+document
+    .querySelectorAll('a[href^="#"]')
+    .forEach(anchor => {
 
-    link.addEventListener("click", function (event) {
+        anchor.addEventListener(
+            "click",
+            function(event) {
 
-        const targetId =
-            this.getAttribute("href");
+                const target =
+                    document.querySelector(
+                        this.getAttribute("href")
+                    );
 
-        const target =
-            document.querySelector(targetId);
+                if (target) {
 
-        if (target) {
+                    event.preventDefault();
 
-            event.preventDefault();
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
 
-            const navbarHeight = 80;
+                }
 
-            const targetPosition =
-                target.getBoundingClientRect().top +
-                window.scrollY -
-                navbarHeight;
-
-            window.scrollTo({
-
-                top: targetPosition,
-
-                behavior: "smooth"
-
-            });
-
-        }
+            }
+        );
 
     });
 
-});
-
 
 /* =========================================
-   TOPIC CARD HOVER EFFECT
+   CARD TILT EFFECT
 ========================================= */
 
 const cards =
     document.querySelectorAll(".topic-card");
 
+
 cards.forEach(card => {
 
-    card.addEventListener("mousemove", (event) => {
+    card.addEventListener(
+        "mousemove",
+        (event) => {
 
-        const rect =
-            card.getBoundingClientRect();
-
-        const x =
-            event.clientX - rect.left;
-
-        const y =
-            event.clientY - rect.top;
-
-        const centerX =
-            rect.width / 2;
-
-        const centerY =
-            rect.height / 2;
-
-        const rotateX =
-            ((y - centerY) / centerY) * -2;
-
-        const rotateY =
-            ((x - centerX) / centerX) * 2;
-
-        card.style.transform =
-            `translateY(-7px)
-             rotateX(${rotateX}deg)
-             rotateY(${rotateY}deg)`;
-
-    });
+            if (window.innerWidth <= 800) {
+                return;
+            }
 
 
-    card.addEventListener("mouseleave", () => {
+            const rect =
+                card.getBoundingClientRect();
 
-        card.style.transform =
-            "translateY(0) rotateX(0) rotateY(0)";
 
-    });
+            const x =
+                event.clientX - rect.left;
+
+            const y =
+                event.clientY - rect.top;
+
+
+            const centerX =
+                rect.width / 2;
+
+            const centerY =
+                rect.height / 2;
+
+
+            const rotateX =
+                ((y - centerY) / centerY) * -2;
+
+
+            const rotateY =
+                ((x - centerX) / centerX) * 2;
+
+
+            card.style.transform =
+                `translateY(-9px)
+                 rotateX(${rotateX}deg)
+                 rotateY(${rotateY}deg)`;
+
+        }
+    );
+
+
+    card.addEventListener(
+        "mouseleave",
+        () => {
+
+            card.style.transform =
+                "translateY(0) rotateX(0) rotateY(0)";
+
+        }
+    );
 
 });
 
 
 /* =========================================
-   NAVBAR BACKGROUND ON SCROLL
+   SCROLL REVEAL
+========================================= */
+
+const revealElements =
+    document.querySelectorAll(
+        ".intro, .topic-card, .article, .takeaway, .references"
+    );
+
+
+const observer =
+    new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    observer.unobserve(
+                        entry.target
+                    );
+
+                }
+
+            });
+
+        },
+        {
+            threshold: 0.12
+        }
+    );
+
+
+revealElements.forEach(element => {
+
+    element.classList.add("reveal");
+
+    observer.observe(element);
+
+});
+
+
+/* =========================================
+   REVEAL ANIMATION CSS
+========================================= */
+
+const revealStyle =
+    document.createElement("style");
+
+
+revealStyle.textContent = `
+
+    .reveal {
+
+        opacity: 0;
+
+        transform:
+            translateY(25px);
+
+        transition:
+            opacity 0.8s ease,
+            transform 0.8s ease;
+
+    }
+
+
+    .reveal.visible {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+
+    }
+
+`;
+
+
+document.head.appendChild(revealStyle);
+
+
+/* =========================================
+   NAVBAR SHADOW ON SCROLL
 ========================================= */
 
 const navbar =
@@ -265,62 +285,21 @@ const navbar =
 
 window.addEventListener("scroll", () => {
 
-    if (!navbar) return;
+    if (!navbar) {
+        return;
+    }
 
-    if (window.scrollY > 50) {
+
+    if (window.scrollY > 20) {
 
         navbar.style.boxShadow =
-            "0 8px 30px rgba(29, 43, 37, 0.08)";
+            "0 8px 30px rgba(29, 43, 37, 0.07)";
 
     } else {
 
-        navbar.style.boxShadow = "none";
+        navbar.style.boxShadow =
+            "none";
 
     }
 
 });
-
-
-/* =========================================
-   PARALLAX HERO EFFECT
-========================================= */
-
-const glowOne =
-    document.querySelector(".glow-one");
-
-const glowTwo =
-    document.querySelector(".glow-two");
-
-
-window.addEventListener("scroll", () => {
-
-    const scrollPosition =
-        window.scrollY;
-
-    if (glowOne) {
-
-        glowOne.style.transform =
-            `translateY(${scrollPosition * 0.12}px)`;
-
-    }
-
-    if (glowTwo) {
-
-        glowTwo.style.transform =
-            `translateY(${scrollPosition * -0.08}px)`;
-
-    }
-
-});
-
-
-/* =========================================
-   PAGE LOADED
-========================================= */
-
-window.addEventListener("load", () => {
-
-    document.body.classList.add("loaded");
-
-});
-```
