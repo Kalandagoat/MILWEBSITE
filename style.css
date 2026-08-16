@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
 
-
 /* =========================================
    ROOT
 ========================================= */
@@ -20,8 +19,7 @@
 
     --border: #dedbd1;
 
-    --shadow:
-        0 20px 50px rgba(29, 43, 37, 0.12);
+    --shadow: 0 20px 50px rgba(29, 43, 37, 0.12);
 }
 
 
@@ -42,11 +40,8 @@ html {
 body {
     background: var(--bg);
     color: var(--text);
-
     font-family: "DM Sans", sans-serif;
-
     line-height: 1.7;
-
     overflow-x: hidden;
 }
 
@@ -80,20 +75,17 @@ button {
     justify-content: space-between;
 
     position: fixed;
-
     top: 0;
     left: 0;
 
     z-index: 1000;
 
-    background:
-        rgba(244, 241, 232, 0.92);
+    background: rgba(244, 241, 232, 0.92);
 
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
 
-    border-bottom:
-        1px solid rgba(29, 43, 37, 0.08);
+    border-bottom: 1px solid rgba(29, 43, 37, 0.08);
 }
 
 .logo {
@@ -188,13 +180,11 @@ button {
             rgba(180, 199, 174, 0.5),
             transparent 30%
         ),
-
         radial-gradient(
             circle at 10% 90%,
             rgba(233, 223, 201, 0.7),
             transparent 25%
         ),
-
         var(--bg);
 }
 
@@ -211,7 +201,6 @@ button {
     color: var(--green);
 
     font-size: 0.72rem;
-
     font-weight: 700;
 
     letter-spacing: 0.18em;
@@ -220,13 +209,11 @@ button {
 }
 
 .hero h1 {
-    font-family:
-        "Playfair Display", serif;
+    font-family: "Playfair Display", serif;
 
     color: var(--dark);
 
-    font-size:
-        clamp(4rem, 9vw, 8rem);
+    font-size: clamp(4rem, 9vw, 8rem);
 
     line-height: 0.94;
 
@@ -275,8 +262,7 @@ button {
     transform: translateY(-4px);
 
     box-shadow:
-        0 12px 25px
-        rgba(29, 43, 37, 0.18);
+        0 12px 25px rgba(29, 43, 37, 0.18);
 }
 
 
@@ -343,13 +329,11 @@ main {
 }
 
 .intro h2 {
-    font-family:
-        "Playfair Display", serif;
+    font-family: "Playfair Display", serif;
 
     color: var(--dark);
 
-    font-size:
-        clamp(2.6rem, 5vw, 4rem);
+    font-size: clamp(2.6rem, 5vw, 4rem);
 
     line-height: 1.05;
 
@@ -374,8 +358,7 @@ main {
 .topic-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 18px;
 
@@ -406,7 +389,8 @@ main {
 
     background-repeat: no-repeat;
 
-    background-size: cover;
+    /* MORE SPACE / LESS ZOOM */
+    background-size: 115% auto;
 
     background-position: center;
 
@@ -414,60 +398,58 @@ main {
 
     transition:
         transform 0.35s ease,
-        box-shadow 0.35s ease;
+        box-shadow 0.35s ease,
+        background-size 0.5s ease;
 }
 
 
 /* =========================================
-   EDUCATION
-   BOOKS / LIBRARY / STUDYING
+   EDUCATION CARD
 ========================================= */
 
 .topic-card.education {
     background-image:
         url(
-            "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1600&q=90"
+            "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1800&q=95"
         );
 
-    background-size: cover;
-    background-position: center;
+    background-size: 115% auto;
+    background-position: center center;
 }
 
 
 /* =========================================
-   HEALTH
-   HEALTHY FOOD / WELLNESS / LIFESTYLE
+   HEALTH CARD
 ========================================= */
 
 .topic-card.health {
     background-image:
         url(
-            "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=1600&q=90"
+            "https://images.unsplash.com/photo-1498837167922-ddd27525a42f?auto=format&fit=crop&w=1800&q=95"
         );
 
-    background-size: cover;
-    background-position: center;
+    background-size: 115% auto;
+    background-position: center center;
 }
 
 
 /* =========================================
-   ENVIRONMENT
-   FOREST / TREES / NATURE
+   ENVIRONMENT CARD
 ========================================= */
 
 .topic-card.environment {
     background-image:
         url(
-            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1600&q=90"
+            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=95"
         );
 
-    background-size: cover;
-    background-position: center;
+    background-size: 115% auto;
+    background-position: center center;
 }
 
 
 /* =========================================
-   IMAGE OVERLAY
+   CARD OVERLAY
 ========================================= */
 
 .topic-card::before {
@@ -483,10 +465,24 @@ main {
         linear-gradient(
             to top,
             rgba(5, 15, 10, 0.94) 0%,
-            rgba(5, 15, 10, 0.68) 38%,
-            rgba(5, 15, 10, 0.20) 75%,
-            rgba(5, 15, 10, 0.05) 100%
+            rgba(5, 15, 10, 0.63) 35%,
+            rgba(5, 15, 10, 0.17) 70%,
+            rgba(5, 15, 10, 0.03) 100%
         );
+}
+
+
+/* =========================================
+   CARD HOVER
+========================================= */
+
+.topic-card:hover {
+    transform: translateY(-9px);
+
+    box-shadow:
+        0 30px 65px rgba(20, 30, 25, 0.25);
+
+    background-size: 120% auto;
 }
 
 
@@ -500,8 +496,7 @@ main {
     top: 28px;
     left: 30px;
 
-    color:
-        rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.85);
 
     font-size: 0.72rem;
 
@@ -530,8 +525,7 @@ main {
 
     color: white;
 
-    font-family:
-        "Playfair Display", serif;
+    font-family: "Playfair Display", serif;
 
     font-size: 2.8rem;
 
@@ -549,8 +543,7 @@ main {
 
     max-width: 310px;
 
-    color:
-        rgba(255, 255, 255, 0.88);
+    color: rgba(255, 255, 255, 0.92);
 
     font-size: 0.93rem;
 }
@@ -571,14 +564,6 @@ main {
     transition: 0.25s ease;
 }
 
-.topic-card:hover {
-    transform: translateY(-9px);
-
-    box-shadow:
-        0 30px 65px
-        rgba(20, 30, 25, 0.25);
-}
-
 .topic-card:hover .read {
     transform: translateX(7px);
 }
@@ -591,80 +576,104 @@ main {
 .article {
     padding: 115px 0;
 
-    border-top:
-        1px solid var(--border);
+    border-top: 1px solid var(--border);
 
     display: grid;
 
-    grid-template-columns:
-        0.7fr 1.3fr;
+    grid-template-columns: 0.7fr 1.3fr;
 
     gap: 60px;
 
     position: relative;
+
+    /*
+       Keeps the image visible while
+       giving the section more breathing room.
+    */
+
+    background-repeat: no-repeat;
+
+    background-size: 125% auto;
+
+    background-position: center center;
 }
 
 
 /* =========================================
-   EDUCATION ARTICLE BACKGROUND
+   EDUCATION ARTICLE
 ========================================= */
 
 .education-section {
-    background:
+    background-image:
         linear-gradient(
             90deg,
-            rgba(244, 241, 232, 0.97),
-            rgba(244, 241, 232, 0.90)
+            rgba(244, 241, 232, 0.73),
+            rgba(244, 241, 232, 0.50)
         ),
         url(
-            "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=1800&q=80"
+            "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=2200&q=95"
         );
 
-    background-size: cover;
+    /*
+       MORE SPACE AROUND BOOKS / LIBRARY
+    */
+    background-size:
+        125% auto;
 
-    background-position: center;
+    background-position:
+        center center;
 }
 
 
 /* =========================================
-   HEALTH ARTICLE BACKGROUND
+   HEALTH ARTICLE
 ========================================= */
 
 .health-section {
-    background:
+    background-image:
         linear-gradient(
             90deg,
-            rgba(244, 241, 232, 0.97),
-            rgba(244, 241, 232, 0.90)
+            rgba(244, 241, 232, 0.70),
+            rgba(244, 241, 232, 0.48)
         ),
         url(
-            "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1800&q=80"
+            "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=2200&q=95"
         );
 
-    background-size: cover;
+    /*
+       SHOW MORE OF THE GYM / WORKOUT AREA
+    */
+    background-size:
+        125% auto;
 
-    background-position: center;
+    background-position:
+        center center;
 }
 
 
 /* =========================================
-   ENVIRONMENT ARTICLE BACKGROUND
+   ENVIRONMENT ARTICLE
 ========================================= */
 
 .environment-section {
-    background:
+    background-image:
         linear-gradient(
             90deg,
-            rgba(244, 241, 232, 0.97),
-            rgba(244, 241, 232, 0.90)
+            rgba(244, 241, 232, 0.69),
+            rgba(244, 241, 232, 0.46)
         ),
         url(
-            "https://images.unsplash.com/photo-1473445361085-b9a07f55608b?auto=format&fit=crop&w=1800&q=80"
+            "https://images.unsplash.com/photo-1473445361085-b9a07f55608b?auto=format&fit=crop&w=2200&q=95"
         );
 
-    background-size: cover;
+    /*
+       SHOW MORE TREES / GREENERY
+    */
+    background-size:
+        125% auto;
 
-    background-position: center;
+    background-position:
+        center center;
 }
 
 
@@ -683,13 +692,11 @@ main {
 }
 
 .article-heading h2 {
-    font-family:
-        "Playfair Display", serif;
+    font-family: "Playfair Display", serif;
 
     color: var(--dark);
 
-    font-size:
-        clamp(2.7rem, 5vw, 4.5rem);
+    font-size: clamp(2.7rem, 5vw, 4.5rem);
 
     line-height: 1.04;
 
@@ -736,19 +743,17 @@ main {
 
     padding: 38px;
 
-    background:
-        rgba(238, 234, 224, 0.93);
+    background: rgba(238, 234, 224, 0.92);
 
     border-radius: 24px;
 
     box-shadow: var(--shadow);
 
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(2px);
 }
 
 .article-highlight h3 {
-    font-family:
-        "Playfair Display", serif;
+    font-family: "Playfair Display", serif;
 
     color: var(--dark);
 
@@ -775,19 +780,15 @@ blockquote {
 
     padding: 35px 40px;
 
-    border-left:
-        3px solid var(--green);
+    border-left: 3px solid var(--green);
 
-    border-radius:
-        0 20px 20px 0;
+    border-radius: 0 20px 20px 0;
 
-    background:
-        rgba(220, 229, 216, 0.78);
+    background: rgba(220, 229, 216, 0.88);
 
     color: var(--green);
 
-    font-family:
-        "Playfair Display", serif;
+    font-family: "Playfair Display", serif;
 
     font-size: 1.7rem;
 
@@ -820,8 +821,7 @@ blockquote {
 
     display: grid;
 
-    grid-template-columns:
-        0.8fr 1.2fr;
+    grid-template-columns: 0.8fr 1.2fr;
 
     gap: 80px;
 
@@ -832,8 +832,7 @@ blockquote {
     overflow: hidden;
 
     box-shadow:
-        0 30px 70px
-        rgba(29, 43, 37, 0.18);
+        0 30px 70px rgba(29, 43, 37, 0.18);
 }
 
 .takeaway::after {
@@ -849,8 +848,7 @@ blockquote {
     right: -220px;
     bottom: -250px;
 
-    background:
-        rgba(220, 229, 216, 0.08);
+    background: rgba(220, 229, 216, 0.08);
 
     pointer-events: none;
 }
@@ -866,13 +864,11 @@ blockquote {
 }
 
 .takeaway h2 {
-    font-family:
-        "Playfair Display", serif;
+    font-family: "Playfair Display", serif;
 
     color: white;
 
-    font-size:
-        clamp(4rem, 7vw, 6.5rem);
+    font-size: clamp(4rem, 7vw, 6.5rem);
 
     line-height: 0.88;
 
@@ -929,8 +925,7 @@ blockquote {
 }
 
 .references h2 {
-    font-family:
-        "Playfair Display", serif;
+    font-family: "Playfair Display", serif;
 
     color: var(--dark);
 
@@ -946,8 +941,7 @@ blockquote {
 .ref-grid {
     display: grid;
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
 
     gap: 18px;
 }
@@ -955,8 +949,7 @@ blockquote {
 .ref-grid > div {
     background: var(--card);
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
     padding: 30px;
 
@@ -966,11 +959,9 @@ blockquote {
 }
 
 .ref-grid > div:hover {
-    transform:
-        translateY(-6px);
+    transform: translateY(-6px);
 
-    box-shadow:
-        var(--shadow);
+    box-shadow: var(--shadow);
 }
 
 .ref-grid h3 {
@@ -995,8 +986,7 @@ blockquote {
 footer {
     padding: 38px 7%;
 
-    border-top:
-        1px solid var(--border);
+    border-top: 1px solid var(--border);
 
     display: flex;
 
@@ -1017,18 +1007,15 @@ footer {
 @media (max-width: 950px) {
 
     .topic-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .topic-card:last-child {
-        grid-column:
-            1 / -1;
+        grid-column: 1 / -1;
     }
 
     .article {
-        grid-template-columns:
-            1fr 2fr;
+        grid-template-columns: 1fr 2fr;
 
         gap: 35px;
     }
@@ -1040,14 +1027,13 @@ footer {
     }
 
     .ref-grid {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
 
 /* =========================================
-   MOBILE NAV
+   MOBILE
 ========================================= */
 
 @media (max-width: 800px) {
@@ -1083,17 +1069,14 @@ footer {
         background:
             rgba(250, 248, 242, 0.98);
 
-        backdrop-filter:
-            blur(15px);
+        backdrop-filter: blur(15px);
 
-        border:
-            1px solid var(--border);
+        border: 1px solid var(--border);
 
         border-radius: 18px;
 
         box-shadow:
-            0 15px 40px
-            rgba(29, 43, 37, 0.12);
+            0 15px 40px rgba(29, 43, 37, 0.12);
     }
 
     .nav-links.open {
@@ -1106,13 +1089,11 @@ footer {
     .hero {
         min-height: 85vh;
 
-        padding:
-            70px 6% 0;
+        padding: 70px 6% 0;
     }
 
     .hero h1 {
-        font-size:
-            clamp(3.5rem, 16vw, 6rem);
+        font-size: clamp(3.5rem, 16vw, 6rem);
     }
 
     .hero-copy {
@@ -1130,17 +1111,15 @@ footer {
     /* INTRO */
 
     .intro {
-        padding:
-            90px 0 55px;
+        padding: 90px 0 55px;
     }
 
     .intro h2 {
-        font-size:
-            clamp(2.4rem, 11vw, 3.5rem);
+        font-size: clamp(2.4rem, 11vw, 3.5rem);
     }
 
 
-    /* TOPICS */
+    /* TOPIC CARDS */
 
     .topic-grid {
         grid-template-columns: 1fr;
@@ -1155,9 +1134,12 @@ footer {
 
         min-height: 360px;
 
-        background-size: cover;
+        /*
+           MORE SPACE ON MOBILE
+        */
+        background-size: 115% auto;
 
-        background-position: center;
+        background-position: center center;
     }
 
     .topic-card:last-child {
@@ -1172,8 +1154,12 @@ footer {
 
         gap: 25px;
 
-        padding:
-            85px 0;
+        padding: 85px 0;
+
+        /*
+           Keep the image spacious
+        */
+        background-size: 140% auto;
     }
 
     .article-body {
@@ -1183,8 +1169,7 @@ footer {
     }
 
     .article-heading h2 {
-        font-size:
-            clamp(2.6rem, 12vw, 4rem);
+        font-size: clamp(2.6rem, 12vw, 4rem);
     }
 
 
@@ -1193,8 +1178,7 @@ footer {
     .article-highlight {
         padding: 28px;
 
-        margin:
-            35px 0;
+        margin: 35px 0;
     }
 
 
@@ -1212,11 +1196,9 @@ footer {
     .takeaway {
         min-height: 700px;
 
-        margin:
-            60px 0 100px;
+        margin: 60px 0 100px;
 
-        padding:
-            55px 35px;
+        padding: 55px 35px;
 
         grid-template-columns: 1fr;
 
@@ -1256,14 +1238,12 @@ footer {
     footer {
         display: block;
 
-        padding:
-            30px 6%;
+        padding: 30px 6%;
     }
 
     footer p + p {
         margin-top: 8px;
     }
-
 }
 
 
@@ -1288,8 +1268,7 @@ footer {
     .takeaway {
         min-height: 700px;
 
-        padding:
-            45px 28px;
+        padding: 45px 28px;
     }
 
     .takeaway h2 {
@@ -1299,7 +1278,27 @@ footer {
     blockquote {
         font-size: 1.25rem;
     }
+}
 
+
+/* =========================================
+   REVEAL ANIMATION
+========================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform: translateY(25px);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform: translateY(0);
 }
 
 
@@ -1317,7 +1316,7 @@ footer {
     *::before,
     *::after {
         transition: none !important;
+
         animation: none !important;
     }
-
 }
