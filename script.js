@@ -121,7 +121,7 @@ contentsLinks.forEach(
 
 
 /* =====================================================
-   ESSAY FOCUS STYLE
+   ESSAY FOCUS ANIMATION
 ===================================================== */
 
 const focusStyle =
