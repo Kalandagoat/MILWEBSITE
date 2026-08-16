@@ -1,4 +1,3 @@
-```css
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
 
 /* =========================================
@@ -18,10 +17,10 @@
     --border: #dedbd1;
 
     --shadow:
-        0 20px 50px rgba(29, 43, 37, 0.08);
+        0 20px 50px rgba(29, 43, 37, 0.10);
 
     --soft-shadow:
-        0 10px 30px rgba(29, 43, 37, 0.06);
+        0 10px 30px rgba(29, 43, 37, 0.07);
 }
 
 
@@ -49,11 +48,6 @@ body {
 
     overflow-x: hidden;
 }
-
-
-/* =========================================
-   GENERAL
-========================================= */
 
 a {
     color: inherit;
@@ -95,7 +89,8 @@ button {
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
 
-    border-bottom: 1px solid rgba(29, 43, 37, 0.08);
+    border-bottom:
+        1px solid rgba(29, 43, 37, 0.08);
 
     transition: 0.3s ease;
 }
@@ -128,6 +123,7 @@ button {
 
 .nav-links {
     display: flex;
+
     align-items: center;
 
     gap: 30px;
@@ -175,7 +171,7 @@ button {
 }
 
 
-/* Mobile button */
+/* Mobile menu button */
 
 .menu-btn {
     display: none;
@@ -202,11 +198,10 @@ button {
     min-height: 90vh;
 
     padding:
-        80px
-        7%
-        0;
+        80px 7% 0;
 
     display: flex;
+
     align-items: center;
 
     position: relative;
@@ -243,7 +238,7 @@ button {
 }
 
 
-/* Small title */
+/* Small heading */
 
 .eyebrow {
     color: var(--green);
@@ -258,12 +253,14 @@ button {
 }
 
 
-/* Hero heading */
+/* Hero title */
 
 .hero h1 {
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display", serif;
 
-    font-size: clamp(4rem, 9vw, 8rem);
+    font-size:
+        clamp(4rem, 9vw, 8rem);
 
     line-height: 0.95;
 
@@ -292,14 +289,15 @@ button {
 }
 
 
-/* Button */
+/* Hero button */
 
 .cta {
     display: inline-block;
 
     margin-top: 30px;
 
-    padding: 13px 23px;
+    padding:
+        13px 23px;
 
     border-radius: 100px;
 
@@ -323,7 +321,8 @@ button {
     background: var(--green);
 
     box-shadow:
-        0 12px 25px rgba(29, 43, 37, 0.15);
+        0 12px 25px
+        rgba(29, 43, 37, 0.15);
 }
 
 
@@ -385,9 +384,7 @@ main {
     text-align: center;
 
     padding:
-        120px
-        0
-        70px;
+        120px 0 70px;
 
     max-width: 780px;
 
@@ -395,9 +392,11 @@ main {
 }
 
 .intro h2 {
-    font-family: "Playfair Display", serif;
+    font-family:
+        "Playfair Display", serif;
 
-    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-size:
+        clamp(2.5rem, 5vw, 4rem);
 
     line-height: 1.05;
 
@@ -419,6 +418,7 @@ main {
 
 /* =========================================
    TOPIC CARDS
+   EDUCATION / HEALTH / ENVIRONMENT
 ========================================= */
 
 .topic-grid {
@@ -433,12 +433,14 @@ main {
 }
 
 
+/* Main card */
+
 .topic-card {
-    min-height: 350px;
+    min-height: 420px;
 
-    padding: 32px;
+    padding: 35px;
 
-    border-radius: 25px;
+    border-radius: 28px;
 
     display: flex;
 
@@ -450,82 +452,164 @@ main {
 
     overflow: hidden;
 
+    color: white;
+
+    background-size: cover;
+
+    background-position: center;
+
+    background-repeat: no-repeat;
+
     text-decoration: none;
 
     transform-style: preserve-3d;
 
     transition:
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        background-size 0.5s ease;
 }
 
 
-/* Card colors */
+/* =========================================
+   EDUCATION BACKGROUND
+   Books / library / studying
+========================================= */
 
 .topic-card.education {
-    background: #dce5d8;
+
+    background-image:
+        url(
+            "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=1200&q=85"
+        );
+
+    background-position: center;
 }
+
+
+/* =========================================
+   HEALTH BACKGROUND
+   Medical / health
+========================================= */
 
 .topic-card.health {
-    background: #eadfd1;
+
+    background-image:
+        url(
+            "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=1200&q=85"
+        );
+
+    background-position: center;
 }
+
+
+/* =========================================
+   ENVIRONMENT BACKGROUND
+   Forest / nature
+========================================= */
 
 .topic-card.environment {
-    background: #d7e1db;
+
+    background-image:
+        url(
+            "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=85"
+        );
+
+    background-position: center;
 }
 
 
-/* Card hover */
+/* =========================================
+   CARD DARK OVERLAY
+========================================= */
 
-.topic-card:hover {
-    box-shadow: var(--shadow);
-}
+.topic-card::before {
 
+    content: "";
 
-/* Card number */
-
-.number {
     position: absolute;
 
-    top: 27px;
+    inset: 0;
+
+    z-index: 0;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(10, 20, 15, 0.88),
+            rgba(10, 20, 15, 0.35),
+            rgba(10, 20, 15, 0.08)
+        );
+
+    transition:
+        background 0.35s ease;
+}
+
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.topic-card .number,
+.topic-card .icon,
+.topic-card h3,
+.topic-card p,
+.topic-card .read {
+
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* Number */
+
+.topic-card .number {
+
+    position: absolute;
+
+    top: 28px;
     left: 30px;
+
+    color:
+        rgba(255, 255, 255, 0.75);
 
     font-size: 0.72rem;
 
     font-weight: 700;
-
-    color:
-        rgba(29, 43, 37, 0.5);
 }
 
 
-/* Card icon */
+/* Icon */
 
-.icon {
+.topic-card .icon {
+
     position: absolute;
 
     top: 20px;
     right: 28px;
 
-    font-size: 2.3rem;
-
     color:
-        rgba(29, 43, 37, 0.5);
+        rgba(255, 255, 255, 0.9);
+
+    font-size: 2.3rem;
 }
 
 
 /* Card title */
 
 .topic-card h3 {
-    font-family: "Playfair Display", serif;
 
-    font-size: 2.5rem;
+    color: white;
+
+    font-family:
+        "Playfair Display", serif;
+
+    font-size: 2.7rem;
 
     line-height: 1;
 
     font-weight: 500;
-
-    color: var(--dark);
 
     margin-bottom: 10px;
 }
@@ -534,30 +618,65 @@ main {
 /* Card description */
 
 .topic-card p {
-    max-width: 290px;
 
-    color: #59655e;
+    max-width: 310px;
+
+    color:
+        rgba(255, 255, 255, 0.84);
 
     font-size: 0.92rem;
 }
 
 
-/* Read link */
+/* Read more */
 
-.read {
+.topic-card .read {
+
+    color: white;
+
     margin-top: 20px;
-
-    color: var(--dark);
 
     font-size: 0.82rem;
 
     font-weight: 700;
 
-    transition: 0.2s ease;
+    transition:
+        transform 0.25s ease;
+}
+
+
+/* =========================================
+   CARD HOVER
+========================================= */
+
+.topic-card:hover {
+
+    transform:
+        translateY(-8px)
+        scale(1.01);
+
+    box-shadow:
+        0 25px 60px
+        rgba(29, 43, 37, 0.22);
+
+    background-size: 108%;
+}
+
+.topic-card:hover::before {
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(10, 20, 15, 0.92),
+            rgba(10, 20, 15, 0.40),
+            rgba(10, 20, 15, 0.12)
+        );
 }
 
 .topic-card:hover .read {
-    transform: translateX(5px);
+
+    transform:
+        translateX(5px);
 }
 
 
@@ -566,7 +685,9 @@ main {
 ========================================= */
 
 .article {
-    padding: 110px 0;
+
+    padding:
+        110px 0;
 
     border-top:
         1px solid var(--border);
@@ -580,9 +701,10 @@ main {
 }
 
 
-/* Article number */
+/* Article label */
 
 .article-label {
+
     font-size: 0.7rem;
 
     font-weight: 700;
@@ -596,7 +718,9 @@ main {
 /* Article heading */
 
 .article-heading h2 {
-    font-family: "Playfair Display", serif;
+
+    font-family:
+        "Playfair Display", serif;
 
     font-size:
         clamp(2.6rem, 5vw, 4.5rem);
@@ -616,21 +740,24 @@ main {
 /* Article subtitle */
 
 .lead {
+
     color: var(--muted);
 
     font-size: 1.05rem;
 }
 
 
-/* Article text */
+/* Article body */
 
 .article-body {
+
     grid-column: 2;
 
     max-width: 700px;
 }
 
 .article-body p {
+
     margin-bottom: 25px;
 
     color: #505b55;
@@ -639,6 +766,7 @@ main {
 }
 
 .article-body p:first-child {
+
     font-size: 1.08rem;
 
     color: var(--text);
@@ -650,23 +778,29 @@ main {
 ========================================= */
 
 .article-highlight {
+
     margin: 45px 0;
 
     padding: 35px;
 
-    background: #eeeae0;
+    background:
+        #eeeae0;
 
     border-radius: 22px;
 
-    box-shadow: var(--soft-shadow);
+    box-shadow:
+        var(--soft-shadow);
 }
 
 .article-highlight .eyebrow {
+
     margin-bottom: 10px;
 }
 
 .article-highlight h3 {
-    font-family: "Playfair Display", serif;
+
+    font-family:
+        "Playfair Display", serif;
 
     font-size: 2rem;
 
@@ -680,6 +814,7 @@ main {
 }
 
 .article-highlight p:last-child {
+
     margin-bottom: 0;
 }
 
@@ -689,9 +824,11 @@ main {
 ========================================= */
 
 blockquote {
+
     margin: 45px 0;
 
-    padding: 30px 35px;
+    padding:
+        30px 35px;
 
     border-left:
         3px solid var(--green);
@@ -718,15 +855,16 @@ blockquote {
 ========================================= */
 
 .takeaway {
+
     margin:
-        70px 0
-        120px;
+        70px 0 120px;
 
     padding: 65px;
 
     border-radius: 28px;
 
-    background: var(--dark);
+    background:
+        var(--dark);
 
     color: white;
 
@@ -739,14 +877,17 @@ blockquote {
 
     align-items: center;
 
-    box-shadow: var(--shadow);
+    box-shadow:
+        var(--shadow);
 }
 
 .takeaway .eyebrow {
+
     color: #a9c39e;
 }
 
 .takeaway h2 {
+
     font-family:
         "Playfair Display", serif;
 
@@ -760,6 +901,7 @@ blockquote {
 }
 
 .takeaway > p {
+
     color: #c5cec8;
 
     font-size: 1rem;
@@ -771,10 +913,12 @@ blockquote {
 ========================================= */
 
 .references {
+
     padding-bottom: 110px;
 }
 
 .references h2 {
+
     font-family:
         "Playfair Display", serif;
 
@@ -790,9 +934,10 @@ blockquote {
 }
 
 
-/* Reference cards */
+/* Reference grid */
 
 .ref-grid {
+
     display: grid;
 
     grid-template-columns:
@@ -801,8 +946,13 @@ blockquote {
     gap: 18px;
 }
 
+
+/* Reference cards */
+
 .ref-grid > div {
-    background: var(--card);
+
+    background:
+        var(--card);
 
     border:
         1px solid var(--border);
@@ -817,12 +967,16 @@ blockquote {
 }
 
 .ref-grid > div:hover {
-    transform: translateY(-5px);
 
-    box-shadow: var(--soft-shadow);
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        var(--soft-shadow);
 }
 
 .ref-grid h3 {
+
     font-size: 1.1rem;
 
     color: var(--dark);
@@ -831,6 +985,7 @@ blockquote {
 }
 
 .ref-grid p {
+
     font-size: 0.85rem;
 
     color: var(--muted);
@@ -839,6 +994,7 @@ blockquote {
 }
 
 .ref-grid a {
+
     color: var(--green);
 
     font-size: 0.82rem;
@@ -854,6 +1010,7 @@ blockquote {
 ========================================= */
 
 footer {
+
     padding:
         35px 7%;
 
@@ -881,46 +1038,60 @@ footer {
 .takeaway,
 .references,
 .intro {
-    will-change: opacity, transform;
+
+    will-change:
+        opacity,
+        transform;
 }
 
 
 /* =========================================
-   RESPONSIVE TABLET
+   TABLET
 ========================================= */
 
 @media (max-width: 950px) {
 
     .navbar {
-        padding: 0 6%;
+
+        padding:
+            0 6%;
     }
 
     .nav-links {
+
         gap: 18px;
     }
 
     .nav-links a {
+
         font-size: 0.78rem;
     }
 
+
     .topic-grid {
+
         grid-template-columns:
             repeat(2, 1fr);
     }
 
     .topic-card:last-child {
+
         grid-column:
             1 / -1;
     }
 
+
     .article {
+
         grid-template-columns:
             1fr 2fr;
 
         gap: 35px;
     }
 
+
     .takeaway {
+
         padding: 50px;
     }
 
@@ -933,19 +1104,24 @@ footer {
 
 @media (max-width: 800px) {
 
-    /* NAV */
+
+    /* Navigation */
 
     .navbar {
+
         height: 70px;
 
-        padding: 0 6%;
+        padding:
+            0 6%;
     }
 
     .menu-btn {
+
         display: block;
     }
 
     .nav-links {
+
         display: none;
 
         position: absolute;
@@ -967,7 +1143,8 @@ footer {
         background:
             rgba(250, 248, 242, 0.97);
 
-        backdrop-filter: blur(15px);
+        backdrop-filter:
+            blur(15px);
 
         border:
             1px solid var(--border);
@@ -980,17 +1157,20 @@ footer {
     }
 
     .nav-links.open {
+
         display: flex;
     }
 
     .nav-links a {
+
         font-size: 0.9rem;
     }
 
 
-    /* HERO */
+    /* Hero */
 
     .hero {
+
         min-height: 85vh;
 
         padding:
@@ -998,10 +1178,12 @@ footer {
     }
 
     .hero-content {
+
         padding-bottom: 5vh;
     }
 
     .hero h1 {
+
         font-size:
             clamp(3.5rem, 16vw, 6rem);
 
@@ -1009,12 +1191,14 @@ footer {
     }
 
     .hero-copy {
+
         font-size: 0.95rem;
 
         max-width: 500px;
     }
 
     .glow-one {
+
         width: 240px;
         height: 240px;
 
@@ -1022,36 +1206,41 @@ footer {
     }
 
     .glow-two {
+
         width: 130px;
         height: 130px;
     }
 
 
-    /* MAIN */
+    /* Main */
 
     main {
+
         width: 88%;
     }
 
 
-    /* INTRO */
+    /* Intro */
 
     .intro {
+
         padding:
-            90px 0
-            55px;
+            90px 0 55px;
     }
 
     .intro h2 {
+
         font-size:
             clamp(2.4rem, 11vw, 3.5rem);
     }
 
 
-    /* TOPIC CARDS */
+    /* Topic cards */
 
     .topic-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
 
         gap: 15px;
 
@@ -1059,58 +1248,77 @@ footer {
     }
 
     .topic-card {
-        min-height: 300px;
+
+        min-height: 350px;
 
         padding: 30px;
+
+        background-size:
+            cover !important;
     }
 
     .topic-card:last-child {
+
         grid-column: auto;
     }
 
+    .topic-card h3 {
 
-    /* ARTICLES */
+        font-size: 2.4rem;
+    }
+
+
+    /* Articles */
 
     .article {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
 
         gap: 25px;
 
-        padding: 85px 0;
+        padding:
+            85px 0;
     }
 
     .article-body {
+
         grid-column: auto;
 
         max-width: none;
     }
 
     .article-heading h2 {
+
         font-size:
             clamp(2.6rem, 12vw, 4rem);
     }
 
     .article-body p {
+
         font-size: 0.95rem;
     }
 
 
-    /* HIGHLIGHTS */
+    /* Highlights */
 
     .article-highlight {
+
         padding: 28px;
 
         margin: 35px 0;
     }
 
     .article-highlight h3 {
+
         font-size: 1.7rem;
     }
 
 
-    /* QUOTES */
+    /* Quotes */
 
     blockquote {
+
         padding: 25px;
 
         margin: 35px 0;
@@ -1119,45 +1327,52 @@ footer {
     }
 
 
-    /* TAKEAWAY */
+    /* Takeaway */
 
     .takeaway {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
 
         padding: 42px;
 
         margin:
-            50px 0
-            90px;
+            50px 0 90px;
 
         gap: 35px;
     }
 
     .takeaway h2 {
+
         font-size: 3rem;
     }
 
 
-    /* REFERENCES */
+    /* References */
 
     .references {
+
         padding-bottom: 80px;
     }
 
     .references h2 {
+
         font-size: 3rem;
     }
 
     .ref-grid {
-        grid-template-columns: 1fr;
+
+        grid-template-columns:
+            1fr;
 
         gap: 15px;
     }
 
 
-    /* FOOTER */
+    /* Footer */
 
     footer {
+
         display: block;
 
         padding:
@@ -1165,6 +1380,7 @@ footer {
     }
 
     footer p + p {
+
         margin-top: 8px;
     }
 
@@ -1178,39 +1394,48 @@ footer {
 @media (max-width: 450px) {
 
     .hero h1 {
+
         font-size: 3.4rem;
     }
 
     .hero-copy {
+
         font-size: 0.9rem;
     }
 
     .cta {
+
         padding:
             12px 19px;
     }
 
     .topic-card {
-        min-height: 280px;
+
+        min-height: 300px;
     }
 
     .topic-card h3 {
+
         font-size: 2.2rem;
     }
 
     .article-heading h2 {
+
         font-size: 2.7rem;
     }
 
     .takeaway {
+
         padding: 32px;
     }
 
     .takeaway h2 {
+
         font-size: 2.7rem;
     }
 
     blockquote {
+
         font-size: 1.25rem;
     }
 
@@ -1224,16 +1449,22 @@ footer {
 @media (prefers-reduced-motion: reduce) {
 
     html {
+
         scroll-behavior: auto;
     }
 
     *,
     *::before,
     *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
     }
 
 }
-```
