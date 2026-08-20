@@ -483,48 +483,9 @@ a {
     color: #25312b;
 }
 
-.essay-body strong {
-    color: #15271c;
-}
-
-.essay-body ul {
-    margin: 0 0 30px 30px;
-    font-size: 18px;
-    line-height: 2;
-}
-
-.essay-body h4 {
-    font-family: "Playfair Display", serif;
-    font-size: 30px;
-    margin: 45px 0 20px;
-}
-
 
 /* =====================================================
-   REFERENCES
-===================================================== */
-
-.references {
-    margin-top: 55px;
-    padding: 30px;
-    border-left: 4px solid #17221d;
-    background: #eeeae0;
-    border-radius: 5px;
-}
-
-.references h4 {
-    margin-top: 0;
-}
-
-.references p {
-    font-size: 15px;
-    margin-bottom: 10px;
-    line-height: 1.7;
-}
-
-
-/* =====================================================
-   CONTRIBUTORS
+   CONTRIBUTORS & AUTOBIOGRAPHY
 ===================================================== */
 
 .contributors-section {
@@ -543,6 +504,8 @@ a {
     border-radius: 25px;
     box-shadow: 0 15px 45px rgba(0, 0, 0, 0.09);
     border: 1px solid rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
 }
 
 .contributor-photo {
@@ -566,6 +529,9 @@ a {
 
 .contributor-info {
     padding: 35px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .contributor-role {
@@ -578,13 +544,32 @@ a {
 .contributor-info h3 {
     font-family: "Playfair Display", serif;
     font-size: 34px;
-    margin: 8px 0 25px;
+    margin: 8px 0 15px;
 }
 
-.bio p {
-    font-size: 16px;
-    line-height: 1.8;
+.bio-subtitle {
+    font-size: 15px;
+    color: #4b554e;
     margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.autobiography {
+    margin-top: 10px;
+}
+
+.autobiography h4 {
+    font-family: "Playfair Display", serif;
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: #17221d;
+}
+
+.autobiography p {
+    font-size: 15px;
+    line-height: 1.8;
+    margin-bottom: 15px;
     color: #303b34;
 }
 
