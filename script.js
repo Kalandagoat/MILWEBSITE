@@ -162,7 +162,6 @@ focusStyle.innerHTML = `
 
 `;
 
-
 document.head.appendChild(
     focusStyle
 );
