@@ -3,224 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIHEW — The Initiative for Human and Environmental Wellbeing</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="style.css">
+    <title>TIHEW - The Initiative for Human and Environmental Wellbeing</title>
+    <style>
+        /* CSS RESET & BASE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* HEADER / NAVIGATION */
+        .header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: #1b4332;
+        }
+
+        .logo-symbol {
+            color: #2d6a4f;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-menu a {
+            font-weight: 500;
+            color: #4a5568;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #2d6a4f;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: linear-gradient(rgba(27, 67, 50, 0.85), rgba(45, 106, 79, 0.85)), url('https://via.placeholder.com/1500x800') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            opacity: 0.9;
+        }
+
+        /* SECTION COMMON STYLES */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #1b4332;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #52b788;
+            margin: 0.5rem auto 0;
+            border-radius: 2px;
+        }
+
+        /* CONTRIBUTORS SECTION */
+        .contributors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contributor-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contributor-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contributor-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            margin-bottom: 1.5rem;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .florie-image { background-image: url('https://via.placeholder.com/120'); }
+        .member2-image { background-image: url('https://via.placeholder.com/120'); }
+        .member3-image { background-image: url('https://via.placeholder.com/120'); }
+
+        .contributor-info h3 {
+            color: #1b4332;
+            margin-bottom: 0.25rem;
+        }
+
+        .contributor-role {
+            display: block;
+            font-size: 0.875rem;
+            color: #52b788;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .contributor-bio {
+            font-size: 0.95rem;
+            color: #64748b;
+            margin-bottom: 1.5rem;
+        }
+
+        .contributor-works {
+            text-align: left;
+            width: 100%;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .contributor-works strong {
+            display: block;
+            color: #334155;
+            margin-bottom: 0.5rem;
+        }
+
+        .contributor-works ul {
+            list-style-type: disc;
+            padding-left: 1.25rem;
+            color: #475569;
+        }
+
+        /* FOOTER */
+        .footer {
+            background-color: #081c15;
+            color: #d8f3dc;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-brand p {
+            color: #95d5b2;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .footer-links h4 {
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+
+        .footer-links ul {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .footer-links a {
+            color: #95d5b2;
+            font-size: 0.9rem;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            border-top: 1px solid #1b4332;
+            padding-top: 1.5rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #74c69d;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- NAVBAR -->
-    <header class="navbar">
-        <div class="nav-logo">
-            <span class="logo-symbol">✦</span>
-            <span>TIHEW</span>
+    <!-- =========================
+         HEADER / NAVIGATION
+    ========================= -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-symbol">✦</span>
+                <span class="logo-text">TIHEW</span>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#rationale">Rationale</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#health">Health</a></li>
+                    <li><a href="#environment">Environment</a></li>
+                    <li><a href="#contributors">Contributors</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav>
-            <a href="#about">ABOUT</a>
-            <a href="#rationale">RATIONALE</a>
-            <a href="#contents">CONTENTS</a>
-            <a href="#education">EDUCATION</a>
-            <a href="#health">HEALTH</a>
-            <a href="#environment">ENVIRONMENT</a>
-            <a href="#contributors">CONTRIBUTORS</a>
-        </nav>
     </header>
 
-    <!-- HERO -->
+    <!-- =========================
+         HERO SECTION
+    ========================= -->
     <section class="hero">
-        <div class="hero-overlay"></div>
         <div class="hero-content">
-            <p class="hero-small">THE INITIATIVE FOR HUMAN & ENVIRONMENTAL WELLBEING</p>
-            <h1>Thoughtful Essays on <span>Education</span>, <span>Health</span>, & <span>Sustainability</span></h1>
-            <p class="hero-description">A student-led platform exploring critical perspectives on learning, human wellness, and ecological preservation.</p>
-            <a href="#contents" class="hero-button">Explore Topics</a>
+            <h1>The Initiative for Human and Environmental Wellbeing</h1>
+            <p>Empowering individuals and communities through education, mental and physical health awareness, and sustainable environmental practices.</p>
         </div>
     </section>
 
-    <!-- ABOUT / INTRO -->
-    <section id="about" class="intro-section">
-        <h2>About The Initiative</h2>
-        <div class="intro-text">
-            <p>The Initiative for Human and Environmental Wellbeing (TIHEW) serves as an academic and creative platform. We publish essays, analyses, and reflections centered on contemporary societal issues.</p>
-            <p>Our focus bridges individual development and planetary stewardship, encouraging rigorous thinking and constructive discourse across three core pillars: Education, Health, and the Environment.</p>
-        </div>
-    </section>
-
-    <!-- RATIONALE -->
-    <section id="rationale" class="rationale-section">
-        <div class="rationale-box">
-            <span class="section-label">OUR PURPOSE</span>
-            <h2>Rationale</h2>
-            <p>In an increasingly complex world, the intersections between human knowledge, physical wellbeing, and environmental vitality are often overlooked. We aim to examine these connections directly.</p>
-            <p>By producing research-backed, accessible essays, TIHEW provides a space for students and readers to engage deeply with ideas that matter for our shared future.</p>
-        </div>
-    </section>
-
-    <!-- CONTENTS / TABLE OF CONTENTS -->
-    <section id="contents" class="contents-section">
-        <div class="section-heading">
-            <span class="section-label">DIRECTORY</span>
-            <h2>Table of Contents</h2>
-            <p>Select a domain below to explore specific essays and research papers.</p>
-        </div>
-
-        <div class="topic-directory">
-            <!-- Topic 1 -->
-            <div class="topic-box">
-                <div class="topic-image education-image"></div>
-                <div class="topic-box-content">
-                    <span class="topic-number">01 / DOMAIN</span>
-                    <h3>Education</h3>
-                    <p>Perspectives on pedagogical methods, philosophy, and personal growth.</p>
-                    <a href="#education" class="topic-link">Read Essays &rarr;</a>
-                </div>
-            </div>
-
-            <!-- Topic 2 -->
-            <div class="topic-box">
-                <div class="topic-image health-image"></div>
-                <div class="topic-box-content">
-                    <span class="topic-number">02 / DOMAIN</span>
-                    <h3>Health</h3>
-                    <p>Insights into mental, physical, and community health dynamics.</p>
-                    <a href="#health" class="topic-link">Read Essays &rarr;</a>
-                </div>
-            </div>
-
-            <!-- Topic 3 -->
-            <div class="topic-box">
-                <div class="topic-image environment-image"></div>
-                <div class="topic-box-content">
-                    <span class="topic-number">03 / DOMAIN</span>
-                    <h3>Environment</h3>
-                    <p>Examinations of climate action, ecosystems, and sustainable systems.</p>
-                    <a href="#environment" class="topic-link">Read Essays &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- EDUCATION SECTION -->
-    <section id="education" class="category-section education-section">
-        <div class="category-background"></div>
-        <div class="category-content">
-            <div class="category-heading">
-                <span class="category-number">CATEGORY 01</span>
-                <h2>Education</h2>
-                <p>Exploring modern learning paradigms, educational philosophy, and intellectual empowerment.</p>
-            </div>
-
-            <article class="essay-card">
-                <div class="essay-top">
-                    <span>ESSAY NO. 1</span>
-                    <span>EDUCATION & PHILOSOPHY</span>
-                </div>
-                <h3>Rethinking Learning Paradigms</h3>
-                <div class="essay-body">
-                    <p>Education forms the backbone of personal and societal transformation. In an evolving academic landscape, understanding how knowledge is acquired and synthesized is paramount.</p>
-                    <p>By fostering critical inquiry rather than rote memorization, educational systems can prepare individuals to address systemic real-world challenges effectively.</p>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <!-- HEALTH SECTION -->
-    <section id="health" class="category-section health-section">
-        <div class="category-background"></div>
-        <div class="category-content">
-            <div class="category-heading">
-                <span class="category-number">CATEGORY 02</span>
-                <h2>Health</h2>
-                <p>Examining holism, community wellness, and preventative healthcare models.</p>
-            </div>
-
-            <article class="essay-card">
-                <div class="essay-top">
-                    <span>ESSAY NO. 2</span>
-                    <span>COMMUNITY & WELLBEING</span>
-                </div>
-                <h3>Holistic Approaches to Modern Health</h3>
-                <div class="essay-body">
-                    <p>Health extends beyond the simple absence of disease; it encompasses psychological stability, physical vitality, and supportive social structures.</p>
-                    <p>Developing sustainable health strategies requires accessible resources, public education, and preventive care frameworks accessible to all demographics.</p>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <!-- ENVIRONMENT SECTION -->
-    <section id="environment" class="category-section environment-section">
-        <div class="category-background"></div>
-        <div class="category-content">
-            <div class="category-heading">
-                <span class="category-number">CATEGORY 03</span>
-                <h2>Environment</h2>
-                <p>Analyzing ecological conservation, climate resilience, and sustainable development.</p>
-            </div>
-
-            <article class="essay-card">
-                <div class="essay-top">
-                    <span>ESSAY NO. 3</span>
-                    <span>ECOLOGY & SUSTAINABILITY</span>
-                </div>
-                <h3>Strategies for Ecological Balance</h3>
-                <div class="essay-body">
-                    <p>Environmental stewardship requires local responsibility alongside global coordination. Protecting local ecosystems directly impacts resource security and community stability.</p>
-                    <p>Implementing regenerative practices, reducing waste, and advocating for sustainable policy are crucial steps toward long-term balance.</p>
-                </div>
-            </article>
-        </div>
-    </section>
-
-    <!-- CONTRIBUTORS -->
-    <section id="contributors" class="contributors-section">
-        <div class="section-heading">
-            <span class="section-label">THE TEAM</span>
-            <h2>Contributors & Autobiographies</h2>
-            <p>Meet the writers and researchers shaping the platform's essays, research, and initiatives.</p>
-        </div>
+    <!-- =========================
+         CONTRIBUTORS SECTION
+    ========================= -->
+    <section id="contributors" class="section">
+        <h2 class="section-title">Our Contributors</h2>
 
         <div class="contributors-grid">
-            
-            <!-- FLORIE -->
+
+            <!-- CONTRIBUTOR 1 -->
             <article class="contributor-card">
-                <div class="contributor-photo">
-                    <img src="https://kommodo.ai/i/nAcNDwSAB59ivbJ6t8ug" alt="Florie">
-                </div>
+                <div class="contributor-image florie-image"></div>
                 <div class="contributor-info">
-                    <span class="contributor-role">CONTRIBUTOR & RESEARCHER</span>
                     <h3>Florie</h3>
-                    <div class="bio">
-                        <p class="bio-subtitle"><strong>Focus:</strong> Educational Philosophy, Pedagogy, and Personal Development</p>
-                        <div class="autobiography">
-                            <h4>Autobiography</h4>
-                            <p>Growing up with a deep passion for understanding how individuals learn and grow, I dedicated my academic journey toward examining the core principles of effective education. My work centers on rethinking traditional learning paradigms and encouraging critical inquiry among students.</p>
-                            <p>Through TIHEW, I aim to create insightful essays that bridge academic theory with real-world application, empowering readers to approach knowledge acquisition with intent and curiosity.</p>
-                        </div>
+                    <span class="contributor-role">Contributor & Writer</span>
+                    <p class="contributor-bio">
+                        Passionate about educational equity, exploring philosophy, 
+                        and writing about how access to learning shapes individual potential.
+                    </p>
+                    <div class="contributor-works">
+                        <strong>Contributions:</strong>
+                        <ul>
+                            <li>Knowledge Is Free and Collectable, but Education Is Not</li>
+                        </ul>
                     </div>
                 </div>
             </article>
 
-            <!-- JYLLANA -->
+            <!-- CONTRIBUTOR 2 -->
             <article class="contributor-card">
-                <div class="contributor-photo">
-                    <img src="https://kommodo.ai/i/MQ7VKrui1mhQLE6p7xt6" alt="Jyllana">
-                </div>
+                <div class="contributor-image member2-image"></div>
                 <div class="contributor-info">
-                    <span class="contributor-role">CONTRIBUTOR & RESEARCHER</span>
-                    <h3>Jyllana</h3>
-                    <div class="bio">
-                        <p class="bio-subtitle"><strong>Focus:</strong> Holistic Health, Community Wellness, and Ecology</p>
-                        <div class="autobiography">
-                            <h4>Autobiography</h4>
-                            <p>My interest lies at the intersection of human health and environmental sustainability. Driven by a desire to promote physical and psychological wellbeing in local communities, my research focuses on actionable strategies for holistic health and ecological balance.</p>
-                            <p>By contributing to TIHEW, I share evidence-informed perspectives designed to foster healthier lifestyles while encouraging active responsibility for our planet's shared future.</p>
-                        </div>
+                    <h3>Contributor Name</h3>
+                    <span class="contributor-role">Health & Wellbeing Writer</span>
+                    <p class="contributor-bio">
+                        Focused on personal health, stress management, and promoting 
+                        practical habits for mental and physical wellness among students.
+                    </p>
+                    <div class="contributor-works">
+                        <strong>Contributions:</strong>
+                        <ul>
+                            <li>Building a Healthy Lifestyle</li>
+                            <li>The Importance of Mental Wellbeing</li>
+                        </ul>
+                    </div>
+                </div>
+            </article>
+
+            <!-- CONTRIBUTOR 3 -->
+            <article class="contributor-card">
+                <div class="contributor-image member3-image"></div>
+                <div class="contributor-info">
+                    <h3>Contributor Name</h3>
+                    <span class="contributor-role">Environmental Writer</span>
+                    <p class="contributor-bio">
+                        Dedicated to raising awareness about sustainability, waste management, 
+                        and community-driven environmental action.
+                    </p>
+                    <div class="contributor-works">
+                        <strong>Contributions:</strong>
+                        <ul>
+                            <li>Protecting the World Around Us</li>
+                            <li>The Problem With Waste</li>
+                        </ul>
                     </div>
                 </div>
             </article>
@@ -228,17 +384,32 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-title">
-                <span class="logo-symbol">✦</span> TIHEW
+            <div class="footer-brand">
+                <span class="logo-symbol">✦</span>
+                <span class="footer-title">TIHEW</span>
+                <p>The Initiative for Human and Environmental Wellbeing</p>
             </div>
-            <p>The Initiative for Human and Environmental Wellbeing — A student-led platform dedicated to thoughtful essays on education, health, and sustainability.</p>
-            <p class="copyright">&copy; 2026 The Initiative for Human and Environmental Wellbeing. All rights reserved.</p>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#rationale">Rationale</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#health">Health</a></li>
+                    <li><a href="#environment">Environment</a></li>
+                    <li><a href="#contributors">Contributors</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Initiative for Human and Environmental Wellbeing. All rights reserved.</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
